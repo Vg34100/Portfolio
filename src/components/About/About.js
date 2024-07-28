@@ -6,6 +6,10 @@ import Techstack from "./Techstack";
 import Aboutcard from "./AboutCard";
 import laptopImg from "../../Assets/about.png";
 import Toolstack from "./Toolstack";
+import CreativeTools from "./CreativeTools";
+import ProgrammingLanguages from "./ProgrammingLanguages";
+import GameEngines from "./GameEngines";
+import DevelopmentTools from "./DevelopmentTools";
 
 function About() {
   return (
@@ -22,7 +26,7 @@ function About() {
             }}
           >
             <h1 style={{ fontSize: "2.1em", paddingBottom: "20px" }}>
-              Know Who <strong className="purple">I'M</strong>
+              Learn More About <strong className="purple">Me</strong>
             </h1>
             <Aboutcard />
           </Col>
@@ -34,16 +38,41 @@ function About() {
             <img src={laptopImg} alt="about" className="img-fluid" />
           </Col>
         </Row>
-        <h1 className="project-heading">
+        <h1 className="project-heading-top">
           Professional <strong className="purple">Skillset </strong>
         </h1>
+        <hr></hr>
 
-        <Techstack />
+        {/* <Techstack /> */}
+
+
+
+        <h1 className="project-heading">
+          <strong className="purple">Programming</strong> Languages
+        </h1>
+        <ProgrammingLanguages />
+
+        <h1 className="project-heading">
+          <strong className="purple">Development</strong> Tools
+        </h1>
+        <DevelopmentTools />
+
+        <h1 className="project-heading">
+          <strong className="purple">Creative</strong> Tools
+        </h1>
+        <CreativeTools />
 
         <h1 className="project-heading">
           <strong className="purple">Tools</strong> I use
         </h1>
         <Toolstack />
+
+        <h1 className="project-heading">
+          <strong className="purple">Game</strong> Engines
+        </h1>
+        <GameEngines />
+
+        <hr></hr>
 
         <Github />
       </Container>
