@@ -3,38 +3,42 @@ import Card from "react-bootstrap/Card";
 import { ImPointRight } from "react-icons/im";
 
 function AboutCard() {
+  const reducedSpacingStyle = {
+    wordSpacing: "-1.5px", // Reduces space between words
+    letterSpacing: "-0.1px", // Slightly reduces space between letters
+  };
+
   return (
     <Card className="quote-card-view">
       <Card.Body>
         <blockquote className="blockquote mb-0">
-          <p style={{ textAlign: "justify" }}>
-            Hi Everyone, I am <span className="purple">Soumyajit Behera </span>
-            from <span className="purple"> Bhubaneswar, India.</span>
+          <p style={{ textAlign: "justify", ...reducedSpacingStyle }}>
+            Hi Everyone, I'm <span className="purple">Pablo Rodriguez </span>
+            from <span className="purple">Bakersfield, California.</span>
             <br />
-            I am currently employed as a software developer at Juspay.
-            <br />
-            I have completed Integrated MSc (IMSc) in Maths and Computing at BIT
-            Mesra.
+            I'm currently pursuing a BS in Computer Science at <span className="purple">California State University, Bakersfield</span>.
             <br />
             <br />
-            Apart from coding, some other activities that I love to do!
+            Beyond coding, here are some activities I'm passionate about:
           </p>
-          <ul>
+          <ul style={reducedSpacingStyle}>
             <li className="about-activity">
-              <ImPointRight /> Playing Games
+              - Developing Video Games
             </li>
             <li className="about-activity">
-              <ImPointRight /> Writing Tech Blogs
+              - Participating in Robotics Competitions
             </li>
             <li className="about-activity">
-              <ImPointRight /> Travelling
+              - Creating Automation Tools
             </li>
           </ul>
 
-          <p style={{ color: "rgb(155 126 172)" }}>
-            "Strive to build things that make a difference!"{" "}
+          <p style={{ ...reducedSpacingStyle }}> 
+            <span className="purple">
+            "Programming isn’t about what you know; it’s about what you can figure out."{" "}
+            </span>
           </p>
-          <footer className="blockquote-footer">Soumyajit</footer>
+          <footer className="blockquote-footer" style={reducedSpacingStyle}>Chris Pine</footer>
         </blockquote>
       </Card.Body>
     </Card>
