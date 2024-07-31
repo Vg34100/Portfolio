@@ -3,11 +3,13 @@
 # Skills visualiation
     - Interactive skill tree or radar chart
     - Show proficiency levels for each skill
-
+# Particles
+    - ✓ Make them move
+    - ✓ Make them react to the user
 # Project Cards
     - Progress Bars
 # Interactive Project Timeline
-    - Create a chronological view of your projects
+    - ✓ Create a chronological view of your projects
     - Highlight concurrent projects
     - Allow zooming in/out to see more or less details
 # Individual project pages

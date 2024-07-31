@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import { projectsData } from "../Projects/projectsData";
+import { projectsData } from "./timelineData";
 import Particle from "../Particle";
 import "./Timeline.css"; // Import the CSS file for styling
 import TimelineCard from "./TimelineCard";
