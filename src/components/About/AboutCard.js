@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import { ImPointRight } from "react-icons/im";
+import DropIn from "../DropIn";
 
 function AboutCard() {
   const reducedSpacingStyle = {
@@ -12,6 +12,8 @@ function AboutCard() {
     <Card className="quote-card-view">
       <Card.Body>
         <blockquote className="blockquote mb-0">
+          <DropIn>
+
           <p style={{ textAlign: "justify", ...reducedSpacingStyle }}>
             Hi Everyone, I'm <span className="purple">Pablo Rodriguez </span>
             from <span className="purple">Bakersfield, California.</span>
@@ -22,6 +24,7 @@ function AboutCard() {
             Beyond coding, here are some activities I'm passionate about:
           </p>
           <ul style={reducedSpacingStyle}>
+            <DropIn>
             <li className="about-activity">
               - Developing Video Games
             </li>
@@ -31,7 +34,9 @@ function AboutCard() {
             <li className="about-activity">
               - Creating Automation Tools
             </li>
+            </DropIn>
           </ul>
+          
 
           <p style={{ ...reducedSpacingStyle }}> 
             <span className="purple">
@@ -39,6 +44,8 @@ function AboutCard() {
             </span>
           </p>
           <footer className="blockquote-footer" style={reducedSpacingStyle}>Chris Pine</footer>
+          </DropIn>
+
         </blockquote>
       </Card.Body>
     </Card>

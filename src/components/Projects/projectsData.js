@@ -10,6 +10,7 @@ export const projectsData = [
   {
     imgPath: arcadiaImg,
     title: "Arcadia",
+    date: "2024-05-30",
     description: "A game browsing website similar to Steam. Developed as part of a database systems project in a group of 3.",
     ghLink: "https://github.com/Vg34100/Arcadia",
     demoLink: "https://artemis.cs.csub.edu/~group3part2/Arcadia/index.php",
@@ -34,9 +35,10 @@ export const projectsData = [
   {
     imgPath: deepImg,
     title: "DEEP",
+    date: "2023-12-30",
     description: "A roguelike pixel art game with automatic floor creation and enemy combat. Developed as part of a software engineering project in a group.",
     ghLink: "https://github.com/Vg34100/DEEP",
-    technologies: ["cpp", "c", "makefile"],
+    technologies: ["cpp", "c"],
     skillsUsed: ["Game Development", "C++", "Procedural Generation", "AI Programming"],
     teamSize: 4,
     thingsLearned: [
@@ -57,6 +59,7 @@ export const projectsData = [
   {
     imgPath: asteroidDefenseImg,
     title: "Asteroid Defense",
+    date: "2022-08-30",
     description: "A 3D asteroid shooter game with ship customization, enemy combat, and resource management. Solo game design project.",
     videoLink: "https://youtu.be/hY5ugPITB0Q",
     technologies: ["unreal"],
@@ -80,6 +83,7 @@ export const projectsData = [
   {
     imgPath: notForzaImg,
     title: "Not Forza",
+    date: "2022-12-30",
     description: "An open-world racing game with a rewind system, skill points system, and car customization, similar to Forza Horizon. Solo game design project.",
     videoLink: "https://youtu.be/hY5ugPITB0Q",
     technologies: ["unreal"],
@@ -103,6 +107,7 @@ export const projectsData = [
   {
     imgPath: novusTechImg,
     title: "Novus Tech",
+    date: "2023-05-30",
     description: "A Portal-inspired story game with unique weapon mechanics and intricate level design. Final cumulative solo game design project.",
     videoLink: "https://youtu.be/hY5ugPITB0Q",
     technologies: ["unreal"],
@@ -126,6 +131,7 @@ export const projectsData = [
   {
     imgPath: uasImg,
     title: "CSU Unmanned Aerial System",
+    date: "2024-06-30",
     description: "Developed an object detection system for package delivery and implemented an automated flight system with waypoint navigation.",
     demoLink: "https://cs.csub.edu/~bthomas/2680/final/home.php",
     technologies: ["python"],

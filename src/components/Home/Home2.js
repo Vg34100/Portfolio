@@ -5,9 +5,9 @@ import Tilt from "react-parallax-tilt";
 import {
   AiFillGithub,
   AiOutlineTwitter,
-  AiFillInstagram,
 } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
+import DropIn from "../DropIn"; 
 
 function Home2() {
   return (
@@ -15,6 +15,7 @@ function Home2() {
       <Container>
         <Row>
           <Col md={8} className="home-about-description">
+          <DropIn>
             <h1 style={{ fontSize: "2.6em" }}>
               LET ME <span className="purple"> INTRODUCE </span> MYSELF
             </h1>
@@ -54,15 +55,20 @@ function Home2() {
               </i>
               to further expand my technological toolkit.
             </p>
+          </DropIn>
+  
           </Col>
           <Col md={4} className="myAvtar">
             <Tilt>
-              <img src={myImg} className="img-fluid" alt="avatar" />
+              <DropIn>
+                <img src={myImg} className="img-fluid" alt="avatar" />
+              </DropIn>
             </Tilt>
           </Col>
         </Row>
         <Row>
           <Col md={12} className="home-about-social">
+          <DropIn>
           <h1>CONNECT WITH ME</h1>
           <p>
           Feel free to <span className="purple">reach out </span>and explore collaboration opportunities
@@ -98,17 +104,9 @@ function Home2() {
                   <FaLinkedinIn />
                 </a>
               </li>
-              {/* <li className="social-icons">
-                <a
-                  href="https://www.instagram.com/soumyajit4419"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour home-social-icons"
-                >
-                  <AiFillInstagram />
-                </a>
-              </li> */}
             </ul>
+          </DropIn>
+
           </Col>
         </Row>
       </Container>
