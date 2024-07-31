@@ -5,11 +5,6 @@ import { CgWebsite } from "react-icons/cg";
 import { BsGithub, BsYoutube } from "react-icons/bs";
 import { SiUnrealengine, SiMonogames, SiCss3, SiPhp, SiJavascript, SiCplusplus, SiC, SiPython } from "react-icons/si";
 
-const reducedSpacingStyle = {
-  wordSpacing: "-1.5px",
-  letterSpacing: "-0.1px",
-};
-
 function ProjectCards(props) {
   const [isFlipped, setIsFlipped] = useState(false);
 

@@ -6,7 +6,6 @@ import logo from "../Assets/icon.webp";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { CgGitFork } from "react-icons/cg";
-import { ImBlog } from "react-icons/im";
 import {
   AiFillStar,
   AiOutlineHome,
@@ -14,7 +13,6 @@ import {
   AiOutlineUser,
 } from "react-icons/ai";
 
-import { CgFileDocument } from "react-icons/cg";
 
 function NavBar() {
   const [expand, updateExpanded] = useState(false);
@@ -69,6 +67,20 @@ function NavBar() {
               </Nav.Link>
             </Nav.Item>
 
+
+            <Nav.Item>
+              <Nav.Link
+                as={Link}
+                to="/timeline"
+                onClick={() => updateExpanded(false)}
+              >
+                <AiOutlineFundProjectionScreen
+                  style={{ marginBottom: "2px" }}
+                />{" "}
+                Timeline
+              </Nav.Link>
+            </Nav.Item>
+            
             <Nav.Item>
               <Nav.Link
                 as={Link}
@@ -81,6 +93,8 @@ function NavBar() {
                 Projects
               </Nav.Link>
             </Nav.Item>
+
+
 
             {/* <Nav.Item>
               <Nav.Link

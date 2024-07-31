@@ -1,0 +1,154 @@
+/* Timeline.css */
+
+.timeline-section {
+    padding: 50px 0;
+    background: #1e1e1e;
+    color: #fff;
+  }
+  
+  .timeline-heading {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #fff; /* Changed to white */
+  }
+  
+  .timeline {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    width: 80%;
+  }
+  
+  .timeline::before {
+    content: '';
+    position: absolute;
+    width: 10px; /* Thicker line */
+    background: #26c2de; /* Cyan color */
+    top: -20px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px; /* Rounded border */
+  }
+  
+  .timeline-item {
+    padding: 20px 40px;
+    position: relative;
+    width: 50%;
+  }
+  
+  .timeline-item.left {
+    left: 0;
+  }
+  
+  .timeline-item.right {
+    left: 50%;
+  }
+  
+  .timeline-card {
+    background: #2e2e2e;
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+    width: 100%;
+    transition: transform 0.3s ease-in-out; /* Add scaling effect */
+  }
+  
+  .timeline-card:hover {
+    transform: scale(1.05); /* Scale on hover */
+  }
+  
+  .timeline-card::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 2px; /* Adjust the height as needed */
+    background: #26c2de; /* Cyan color */
+    top: 50%;
+    transform: translateY(-50%);
+    right: -40px; /* Position the connector on the right */
+  }
+  
+  .timeline-item.right .timeline-card::after {
+    left: -40px; /* Position the connector on the left */
+    right: auto;
+  }
+  
+  .timeline-title {
+    margin: 0;
+    font-size: 24px;
+    color: #26c2de; /* Cyan color */
+  }
+  
+  .timeline-date {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #a6a6a6;
+  }
+  
+  .timeline-description {
+    margin-bottom: 10px;
+  }
+  
+  .timeline-tech-icons {
+    display: flex;
+    justify-content: center; /* Center the icons */
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  
+  .timeline-tech-icon {
+    background: #26c2de;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin: 2px;
+    font-size: 20px;
+    transition: transform 0.3s ease-in-out; /* Add scaling effect */
+  }
+  
+  .timeline-tech-icon:hover {
+    transform: scale(1.2); /* Scale on hover */
+  }
+  
+  .timeline-card-view {
+    box-shadow: 0 4px 5px 3px #1fa0b7 !important;
+    color: white !important;
+    background-color: transparent !important;
+    opacity: 0.9 !important;
+    transition: all 0.5s ease 0s !important;
+    height: 100% !important;
+  }
+  
+  /* Media Queries for Responsiveness */
+  
+  @media (max-width: 768px) {
+    .timeline {
+      width: 100%;
+    }
+    
+    .timeline-item {
+      width: 100%;
+      padding: 10px 20px;
+    }
+    
+    .timeline-item.left,
+    .timeline-item.right {
+      left: 0;
+    }
+    
+    .timeline-card::after,
+    .timeline-item.right .timeline-card::after {
+      left: 50%;
+      right: auto;
+      transform: translateX(-50%);
+      top: auto;
+      bottom: -20px; /* Position the connector at the bottom of the card */
+      height: 40px; /* Increase the height of the connector */
+      width: 2px; /* Adjust the width */
+    }
+    
+    .timeline::before {
+      width: 2px; /* Thinner line */
+    }
+  }
+  

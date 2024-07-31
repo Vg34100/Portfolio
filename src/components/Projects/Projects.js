@@ -5,6 +5,7 @@ import ProjectCard from "./ProjectCards";
 import SearchAndFilter from "./SearchAndFilter";
 import Particle from "../Particle";
 import { projectsData } from "./projectsData";
+import DropIn from "../DropIn";
 
 function Projects() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -31,26 +32,35 @@ function Projects() {
   return (
     <Container fluid className="project-section">
       <Container>
-        <h1 className="project-heading">
-          My Recent <strong className="purple">Works </strong>
-        </h1>
-        <p style={{ color: "white" }}>
-          Here are a few projects I've worked on recently.
-        </p>
+        <DropIn>
+          <h1 className="project-heading">
+            My Recent <strong className="purple">Works </strong>
+          </h1>
+          <p style={{ color: "white" }}>
+            Here are a few projects I've worked on recently.
+          </p>
 
+          <div>
+          <SearchAndFilter
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            selectedTech={selectedTech}
+            setSelectedTech={setSelectedTech}
+            allTechnologies={allTechnologies}
+          />
+          </div>
 
-        <SearchAndFilter
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-          selectedTech={selectedTech}
-          setSelectedTech={setSelectedTech}
-          allTechnologies={allTechnologies}
-        />
+        </DropIn>
+
         
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
           {filteredProjects.map((project, index) => (
             <Col md={4} className="project-card" key={index}>
-              <ProjectCard {...project} />
+              <DropIn>
+                <div>
+                  <ProjectCard {...project} />
+                </div>
+              </DropIn>
             </Col>
           ))}
         </Row>

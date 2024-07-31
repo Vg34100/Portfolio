@@ -2,7 +2,6 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Particle from "../Particle";
 import Github from "./Github";
-import Techstack from "./Techstack";
 import Aboutcard from "./AboutCard";
 import laptopImg from "../../Assets/about.png";
 import Toolstack from "./Toolstack";
@@ -10,6 +9,7 @@ import CreativeTools from "./CreativeTools";
 import ProgrammingLanguages from "./ProgrammingLanguages";
 import GameEngines from "./GameEngines";
 import DevelopmentTools from "./DevelopmentTools";
+import DropIn from "../DropIn";
 
 function About() {
   return (
@@ -25,56 +25,71 @@ function About() {
               paddingBottom: "50px",
             }}
           >
+            <DropIn>
             <h1 style={{ fontSize: "2.1em", paddingBottom: "20px" }}>
               Learn More About <strong className="purple">Me</strong>
             </h1>
+            </DropIn>
             <Aboutcard />
+
           </Col>
           <Col
             md={5}
             style={{ paddingTop: "120px", paddingBottom: "50px" }}
             className="about-img"
           >
-            <img src={laptopImg} alt="about" className="img-fluid" />
+            <DropIn>
+              <img src={laptopImg} alt="about" className="img-fluid" />
+            </DropIn>
           </Col>
         </Row>
+        <DropIn>
         <h1 className="project-heading-top">
           Professional <strong className="purple">Skillset </strong>
         </h1>
         <hr></hr>
 
-        {/* <Techstack /> */}
-
-
 
         <h1 className="project-heading">
           <strong className="purple">Programming</strong> Languages
         </h1>
-        <ProgrammingLanguages />
+        <div>
+          <ProgrammingLanguages />
+        </div>
 
         <h1 className="project-heading">
           <strong className="purple">Development</strong> Tools
         </h1>
-        <DevelopmentTools />
+        <div>
+          <DevelopmentTools />
+        </div>
 
         <h1 className="project-heading">
           <strong className="purple">Creative</strong> Tools
         </h1>
-        <CreativeTools />
+        <div>
+          <CreativeTools />
+        </div>
 
         <h1 className="project-heading">
           <strong className="purple">Tools</strong> I use
         </h1>
-        <Toolstack />
+        <div>
+          <Toolstack />
+        </div>
 
         <h1 className="project-heading">
           <strong className="purple">Game</strong> Engines
         </h1>
-        <GameEngines />
+        <div>
+          <GameEngines />
+        </div>
 
         <hr></hr>
 
         <Github />
+
+        </DropIn>
       </Container>
     </Container>
   );
