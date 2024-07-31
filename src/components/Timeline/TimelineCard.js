@@ -33,6 +33,7 @@ function TimelineCard(props) {
     <Card className="timeline-card-view">
       <Card.Body>
         <Card.Title className="purple" style={{ textTransform: 'uppercase', fontWeight: 'bold' }}>{props.title}</Card.Title>
+        {props.imgPath && <Card.Img variant="top" src={props.imgPath} alt="card-img" />}
         <Card.Subtitle className="mb-2 text-muted">{new Date(props.date).toLocaleDateString()}</Card.Subtitle>
         <Card.Text>
           {props.description}

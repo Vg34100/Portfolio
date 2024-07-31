@@ -151,6 +151,28 @@ export const projectsData = [
       { name: "Embedded Systems", level: 75 }
     ],
     moreInfoLink: "/projects/uas"
+  },
+  {
+    title: "CSUB",
+    description: "Started attended California State University Bakersfield for Computer Science",
+    date: "2022-08-02",
+    technologies: ["cpp"],
+  },
+  {
+    title: "CTEC",
+    description: "Started attended the Career and Technical Education Center for Video Game Design",
+    date: "2021-08-02",
+    technologies: ["unreal"],
+  },
+  {
+    title: "Student Assistant",
+    description: "Became an Instructional Student Assistant at CSUB for Computer Architecture.",
+    date: "2024-01-02",
+  },
+  {
+    title: "FabLab Intern",
+    description: "Became a FabLab Intern at CSUB.",
+    date: "2024-04-02",
   }
 ];
 
