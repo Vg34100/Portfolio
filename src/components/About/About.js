@@ -10,6 +10,7 @@ import ProgrammingLanguages from "./ProgrammingLanguages";
 import GameEngines from "./GameEngines";
 import DevelopmentTools from "./DevelopmentTools";
 import DropIn from "../DropIn";
+import "./About.css"
 
 function About() {
   return (
@@ -83,6 +84,7 @@ function About() {
         </h1>
         <div>
           <GameEngines />
+
         </div>
 
         <hr></hr>
