@@ -2,10 +2,10 @@ import React from "react";
 
 function ProgressBar({ progress }) {
     const getColor = () => {
-        if (progress < 25) return "#ff0000"; // Red
-        if (progress < 50) return "#ffa500"; // Orange
-        if (progress < 75) return "#ffff00"; // Yellow
-        return "#008000"; // Green
+        if (progress < 25) return "#156077"; // Red
+        if (progress < 50) return "#1a7c95"; // Orange
+        if (progress < 75) return "#1f98b2"; // Yellow
+        return "#24b4d0"; // Green
     };
 
     return (

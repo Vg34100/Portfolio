@@ -3,30 +3,10 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { CgWebsite } from "react-icons/cg";
 import { BsGithub, BsYoutube } from "react-icons/bs";
-import { SiUnrealengine, SiMonogames, SiCss3, SiPhp, SiJavascript, SiCplusplus, SiC, SiPython } from "react-icons/si";
 
-const getTechIcon = (tech) => {
-  switch (tech) {
-    case "unreal":
-      return <SiUnrealengine />;
-    case "monogame":
-      return <SiMonogames />;
-    case "css":
-      return <SiCss3 />;
-    case "php":
-      return <SiPhp />;
-    case "javascript":
-      return <SiJavascript />;
-    case "cpp":
-      return <SiCplusplus />;
-    case "c":
-      return <SiC />;
-    case "python":
-      return <SiPython />;
-    default:
-      return null;
-  }
-};
+
+import { getTechIcon } from '../utils/getTechIcons';  // Adjust the import path as needed
+
 
 function TimelineCard(props) {
   return (

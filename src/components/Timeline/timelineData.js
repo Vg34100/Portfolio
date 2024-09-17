@@ -1,10 +1,15 @@
-// projectsData.js
+// timelineData.js
 import arcadiaImg from "../../Assets/Projects/blog.png";
 import deepImg from "../../Assets/Projects/deep.png";
 import asteroidDefenseImg from "../../Assets/Projects/asteroid-defense.png";
 import notForzaImg from "../../Assets/Projects/not-forza.png";
 import novusTechImg from "../../Assets/Projects/novus-tech.png";
 import uasImg from "../../Assets/Projects/uas.png";
+
+
+import sleepCycleImg from "../../Assets/Projects/sleep-cycle.png";
+import structureVoidableImg from "../../Assets/Projects/structure-voidable.png";
+import lootExplorerImg from "../../Assets/Projects/loot-explorer.png";
 
 export const projectsData = [
   {
@@ -173,6 +178,33 @@ export const projectsData = [
     title: "FabLab Intern",
     description: "Became a FabLab Intern at CSUB.",
     date: "2024-04-02",
+  },
+  {
+    title: "Learning Java",
+    description: "Began learning Java programming and developing Minecraft mods.",
+    date: "2024-06-30",
+    technologies: ["java", "intellij", "github", "minecraft"],
+  },
+  {
+    imgPath: sleepCycleImg,
+    title: "Sleep Cycle",
+    date: "2024-07-08",
+    description: "Enhances the sleeping mechanics by allowing time to pass progressively while players are asleep, rather than skipping the night instantly.",
+    technologies: ["java", "intellij", "minecraft"],
+  },
+  {
+    imgPath: structureVoidableImg,
+    title: "Structure Voidable",
+    date: "2024-07-27",
+    description: "Helps the Minecraft content developer by making the Structure Void block easier to use and visible like barriers.",
+    technologies: ["java", "intellij", "minecraft"],
+  },
+  {
+    imgPath: lootExplorerImg,
+    title: "Loot Explorer",
+    date: "2024-07-27",
+    description: "Makes containers containing loot tables appear in the creative inventory.",
+    technologies: ["java", "intellij", "minecraft"],
   }
 ];
 

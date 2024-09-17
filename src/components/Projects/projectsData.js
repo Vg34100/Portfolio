@@ -6,6 +6,11 @@ import notForzaImg from "../../Assets/Projects/not-forza.png";
 import novusTechImg from "../../Assets/Projects/novus-tech.png";
 import uasImg from "../../Assets/Projects/uas.png";
 
+import sleepCycleImg from "../../Assets/Projects/sleep-cycle.png";
+import structureVoidableImg from "../../Assets/Projects/structure-voidable.png";
+import lootExplorerImg from "../../Assets/Projects/loot-explorer.png";
+
+
 export const projectsData = [
   {
     imgPath: arcadiaImg,
@@ -151,6 +156,87 @@ export const projectsData = [
       { name: "Embedded Systems", level: 75 }
     ],
     moreInfoLink: "/projects/uas"
+  },
+
+  {
+    imgPath: sleepCycleImg,
+    title: "Sleep Cycle",
+    date: "2024-07-08",
+    description: "Enhances the sleeping mechanics by allowing time to pass progressively while players are asleep, rather than skipping the night instantly.",
+    ghLink: "https://github.com/Vg34100/Minecraft-SleepCycle",
+    demoLink: "https://modrinth.com/mod/sleepcycle",
+    
+    technologies: ["java", "intellij", "minecraft"],
+    skillsUsed: ["Java Programming", "Minecraft Modding", "Game Mechanics", "FabricAPI"],
+    teamSize: 1,
+    thingsLearned: [
+      "Minecraft mod development",
+      "Custom game mechanics implementation",
+      "Working with FabricAPI",
+      "Creating custom effects and advancements"
+    ],
+    contributionPercentage: 100,
+    skillsCorrelation: [
+      { name: "Java Programming", level: 85 },
+      { name: "Minecraft Modding", level: 80 },
+      { name: "Game Design", level: 75 },
+      { name: "Problem Solving", level: 85 }
+    ],
+    moreInfoLink: "/projects/sleep-cycle"
+  },
+  {
+    imgPath: structureVoidableImg,
+    title: "Structure Voidable",
+    date: "2024-07-27",
+    description: "Helps the Minecraft content developer by making the Structure Void block easier to use and visible like barriers.",
+    ghLink: "https://github.com/Vg34100/Minecraft-StructureVoidable",
+    demoLink: "https://modrinth.com/mod/structurevoidable",
+
+
+    technologies: ["java", "intellij", "minecraft"],
+    skillsUsed: ["Java Programming", "Minecraft Modding", "UI/UX Design", "Block Behavior Modification"],
+    teamSize: 1,
+    thingsLearned: [
+      "Advanced block behavior modification in Minecraft",
+      "Customizing rendering and visual effects",
+      "Enhancing developer tools within Minecraft",
+      "Optimizing mod performance"
+    ],
+    contributionPercentage: 100,
+    skillsCorrelation: [
+      { name: "Java Programming", level: 90 },
+      { name: "Minecraft Modding", level: 85 },
+      { name: "UI/UX Design", level: 80 },
+      { name: "Problem Solving", level: 90 }
+    ],
+    moreInfoLink: "/projects/structure-voidable"
+  },
+  {
+    imgPath: lootExplorerImg,
+    title: "Loot Explorer",
+    date: "2024-07-27",
+    description: "Makes containers containing loot tables appear in the creative inventory.",
+    ghLink: "https://github.com/Vg34100/Minecraft-LootExplorer",
+    demoLink: "https://modrinth.com/mod/lootexplorer",
+
+
+    technologies: ["java", "intellij", "minecraft"],
+    skillsUsed: ["Java Programming", "Minecraft Modding", "Inventory Management", "Data Pack Integration"],
+    teamSize: 1,
+    thingsLearned: [
+      "Manipulating Minecraft's creative inventory",
+      "Working with loot tables and NBT data",
+      "Integrating mod features with data packs",
+      "Enhancing developer workflow in Minecraft"
+    ],
+    contributionPercentage: 100,
+    skillsCorrelation: [
+      { name: "Java Programming", level: 95 },
+      { name: "Minecraft Modding", level: 90 },
+      { name: "Data Management", level: 85 },
+      { name: "User Experience Design", level: 80 }
+    ],
+    moreInfoLink: "/projects/loot-explorer"
   }
 ];
 

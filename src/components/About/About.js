@@ -4,11 +4,11 @@ import Particle from "../Particle";
 import Github from "./Github";
 import Aboutcard from "./AboutCard";
 import laptopImg from "../../Assets/about.png";
-import Toolstack from "./Toolstack";
-import CreativeTools from "./CreativeTools";
-import ProgrammingLanguages from "./ProgrammingLanguages";
-import GameEngines from "./GameEngines";
-import DevelopmentTools from "./DevelopmentTools";
+import Toolstack from "./Stacks/Toolstack";
+import CreativeTools from "./Stacks/CreativeTools";
+import ProgrammingLanguages from "./Stacks/ProgrammingLanguages";
+import GameEngines from "./Stacks/GameEngines";
+import DevelopmentTools from "./Stacks/DevelopmentTools";
 import DropIn from "../DropIn";
 import "./About.css"
 

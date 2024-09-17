@@ -53,7 +53,7 @@ function Projects() {
         </DropIn>
 
         
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+        <Row style={{ justifyContent: "center", paddingBottom: "0px" }}>
           {filteredProjects.map((project, index) => (
             <Col md={4} className="project-card" key={index}>
               <DropIn>

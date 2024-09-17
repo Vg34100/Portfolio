@@ -1,18 +1,8 @@
 // SearchAndFilter.js
 import React from "react";
 import { Form, InputGroup, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { SiUnrealengine, SiMonogames, SiCss3, SiPhp, SiJavascript, SiCplusplus, SiC, SiPython} from "react-icons/si";
+import { getTechIcon } from '../utils/getTechIcons';  
 
-const techIcons = {
-	unreal: SiUnrealengine,
-	monogame: SiMonogames,
-	css: SiCss3,
-	php: SiPhp,
-	javascript: SiJavascript,
-	cpp: SiCplusplus,
-	c: SiC,
-	python: SiPython,
-};
 
 function SearchAndFilter({ searchTerm, setSearchTerm, selectedTech, setSelectedTech, allTechnologies }) {
 	const handleTechToggle = (tech) => {
@@ -36,8 +26,8 @@ function SearchAndFilter({ searchTerm, setSearchTerm, selectedTech, setSelectedT
 		</InputGroup>
 		<div className="d-flex flex-wrap justify-content-center gap-2 mb-3">
 			{allTechnologies.map(tech => {
-				const IconComponent = techIcons[tech.toLowerCase()] || null;
-				return (
+          const IconComponent = getTechIcon(tech.toLowerCase());
+		  return (
 				<OverlayTrigger
 				key={tech}
 				placement="top"
@@ -48,8 +38,8 @@ function SearchAndFilter({ searchTerm, setSearchTerm, selectedTech, setSelectedT
 				onClick={() => handleTechToggle(tech)}
 				className={`tech-button ${selectedTech.includes(tech) ? "active" : ""}`}
 				>
-				{IconComponent ? <IconComponent /> : tech}
-			</Button>
+                {IconComponent || tech}
+				</Button>
 		</OverlayTrigger>
 		);
 	})}
