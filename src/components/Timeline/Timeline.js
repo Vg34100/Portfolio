@@ -24,7 +24,22 @@ function Timeline() {
       <Particle />
       <Container>
         <DropIn>
-          <h1 className="project-heading">
+        <div className="button-container">
+    
+        <Button  onClick={toggleSortOrder}  variant="primary" className="m-1">
+        <h1>My Project Timelime</h1>
+        </Button>
+        </div>
+        
+        <p style={{ color: "white" }}>
+        The timeline of my previous work.
+        </p>
+        
+        
+        <br></br>
+        
+        <br></br>
+          {/* <h1 className="project-heading">
             My Project <strong className="purple">Timeline</strong>
           </h1>
             <p style={{ color: "white" }}>
@@ -35,7 +50,7 @@ function Timeline() {
             </Button>
           <br></br>
 
-          <br></br>
+          <br></br> */}
         </DropIn>
 
         <DropIn>
