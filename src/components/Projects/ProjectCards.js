@@ -3,10 +3,35 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { CgWebsite } from "react-icons/cg";
 import { BsGithub, BsYoutube } from "react-icons/bs";
-import { getTechIcon } from '../utils/getTechIcons';  
+import { SiUnrealengine, SiMonogames, SiCss3, SiPhp, SiJavascript, SiCplusplus, SiC, SiPython } from "react-icons/si";
+import ProgressBar from "./ProgressBar";
+import { Link } from "react-router-dom";
 
 function ProjectCards(props) {
   const [isFlipped, setIsFlipped] = useState(false);
+
+  const getTechIcon = (tech) => {
+    switch (tech) {
+      case "unreal":
+        return <SiUnrealengine />;
+      case "monogame":
+        return <SiMonogames />;
+      case "css":
+        return <SiCss3 />;
+      case "php":
+        return <SiPhp />;
+      case "javascript":
+        return <SiJavascript />;
+      case "cpp":
+        return <SiCplusplus />;
+      case "c":
+        return <SiC />;
+      case "python":
+        return <SiPython />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className={`project-card ${isFlipped ? "flipped" : ""}`} onClick={() => setIsFlipped(!isFlipped)}>
@@ -46,24 +71,74 @@ function ProjectCards(props) {
             </Card.Body>
           </>
         ) : (
-          <Card.Body>
-            <Card.Title className="purple" style={{ textTransform: 'uppercase', fontWeight: 'bold' }}>{props.title} - More Info</Card.Title>
-            <div className="card-info">
-              <p><strong>Skills Used:</strong> {props.skillsUsed.join(', ')}</p>
-              <p><strong>Team Size:</strong> {props.teamSize}</p>
-              <p><strong>Things Learned:</strong> {props.thingsLearned.join(', ')}</p>
-              <p><strong>Contribution Percentage:</strong> {props.contributionPercentage}%</p>
-              <p><strong>Skills Correlation:</strong></p>
-              <ul>
-                {props.skillsCorrelation.map((skill, index) => (
-                  <li key={index}>{skill.name}: {skill.level}%</li>
-                ))}
-              </ul>
-              <Button variant="primary" href={props.moreInfoLink} target="_blank" className="m-1">
-                More Info
-              </Button>
+          <Card.Body
+          // style={{
+          //   backfaceVisibility: "hidden",
+          //   position: "absolute",
+          //   top: 0,
+          //   left: 0,
+          //   width: "100%",
+          //   height: "100%",
+          //   backgroundColor: "#f8f9fa",
+          //   transform: "rotateY(180deg)",
+          //   overflowY: "auto",
+          // }}
+        >
+          <Card.Title
+            className="purple"
+            style={{
+              textTransform: "uppercase",
+              fontWeight: "bold",
+              marginBottom: "15px",
+            }}
+          >
+            {props.title} - More Info
+          </Card.Title>
+          <div className="card-info">
+            <p>
+              <strong>Skills Used:</strong> {props.skillsUsed.join(", ")}
+            </p>
+            <p>
+              <strong>Team Size:</strong> {props.teamSize}
+            </p>
+            <p>
+              <strong>Things Learned:</strong>{" "}
+              {props.thingsLearned.join(", ")}
+            </p>
+            <p>
+              <strong>Contribution Percentage:</strong>{" "}
+              {props.contributionPercentage}%
+            </p>
+            <div>
+              <strong>Skills Correlation:</strong>
+              {props.skillsCorrelation.map((skill, index) => (
+                <ProgressBar
+                  key={index}
+                  progress={skill.level}
+                  label={skill.name}
+                />
+              ))}
             </div>
-          </Card.Body>
+            {/* <Link to={`${props.moreInfoLink}`}>
+                <Button
+                  variant="primary"
+                  className="mt-3"
+                  onClick={(e) => e.stopPropagation()} // Prevent card flip
+                >
+                  More Info
+                </Button>
+              </Link>
+               */}
+              <Link to={props.moreInfoLink} onClick={(e) => e.stopPropagation()}>
+                <Button
+                  variant="primary"
+                  className="mt-3"
+                >
+                  More Info
+                </Button>
+              </Link>
+          </div>
+        </Card.Body>
         )}
       </Card>
     </div>

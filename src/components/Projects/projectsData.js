@@ -35,7 +35,7 @@ export const projectsData = [
       { name: "Teamwork", level: 90 },
       { name: "PHP", level: 75 }
     ],
-    moreInfoLink: "/projects/arcadia"
+    moreInfoLink: "/arcadia"
   },
   {
     imgPath: deepImg,
@@ -59,7 +59,7 @@ export const projectsData = [
       { name: "Algorithm Design", level: 75 },
       { name: "Software Engineering", level: 80 }
     ],
-    moreInfoLink: "/projects/deep"
+    moreInfoLink: "/deep"
   },
   {
     imgPath: asteroidDefenseImg,

@@ -17,6 +17,10 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Timeline from "./components/Timeline/Timeline";
 
+import Arcadia from "./components/Projects/ProjectPages/Arcadia";
+import DEEP from "./components/Projects/ProjectPages/DEEP";
+
+
 function App() {
   const [load, upadateLoad] = useState(true);
 
@@ -40,6 +44,11 @@ function App() {
           <Route path="/project" element={<Projects />} />
           <Route path="/about" element={<About />} />
           <Route path="/timeline" element={<Timeline />} />
+
+          <Route path="/arcadia" element={<Arcadia />} />
+          <Route path="/deep" element={<DEEP />} />
+
+
           <Route path="*" element={<Navigate to="/"/>} />
         </Routes>
         <Footer />
