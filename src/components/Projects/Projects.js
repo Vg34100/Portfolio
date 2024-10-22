@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import SearchAndFilter from "./SearchAndFilter";
 import Particle from "../Particle";
-import { projectsData } from "./projectsData";
+import { projectsData } from "../projectsData";
 import DropIn from "../DropIn";
 
 function Projects() {
@@ -13,21 +13,33 @@ function Projects() {
 
   const allTechnologies = useMemo(() => {
     const techSet = new Set();
-    projectsData.forEach(project => {
-      project.technologies.forEach(tech => techSet.add(tech));
-    });
+    
+    if (projectsData && Array.isArray(projectsData)) {
+      projectsData.forEach(project => {
+        if (project.imgPath && project.technologies && Array.isArray(project.technologies)) {
+          project.technologies.forEach(tech => {
+            techSet.add(tech); // Only add if project has an imgPath
+          });
+        }
+      });
+    }
+    
     return Array.from(techSet);
   }, []);
+  
 
   const filteredProjects = useMemo(() => {
-    return projectsData.filter(project => {
-      const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                            project.description.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesTech = selectedTech.length === 0 || 
-                          project.technologies.some(tech => selectedTech.includes(tech));
-      return matchesSearch && matchesTech;
-    });
+    return projectsData
+      .filter(project => project.imgPath) // Only include projects that have imgPath
+      .filter(project => {
+        const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                              project.description.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesTech = selectedTech.length === 0 || 
+                            project.technologies.some(tech => selectedTech.includes(tech));
+        return matchesSearch && matchesTech;
+      });
   }, [searchTerm, selectedTech]);
+  
 
   return (
     <Container fluid className="project-section">

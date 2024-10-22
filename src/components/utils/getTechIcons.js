@@ -8,9 +8,17 @@ import {
   SiCplusplus, 
   SiC, 
   SiPython, 
-  SiIntellijidea 
+  SiIntellijidea,
+  SiFlutter,
+  SiDart,
+  SiDjango,
+  SiPostgresql,
+  SiSupabase,
+  SiGoogle
 } from 'react-icons/si';
 import { DiJava, DiGithubBadge } from 'react-icons/di';
+
+import { FaReact } from "react-icons/fa";
 import MinecraftIcon from './icons/MinecraftIcon';  // Adjust the import path as needed
 
 const techIcons = {
@@ -25,7 +33,14 @@ const techIcons = {
   java: DiJava,
   intellij: SiIntellijidea,
   github: DiGithubBadge,
-  minecraft: MinecraftIcon
+  minecraft: MinecraftIcon,
+  flutter: SiFlutter,
+  dart: SiDart,
+  django: SiDjango,
+  reactnative: FaReact,
+  postgresql: SiPostgresql,
+  supabase: SiSupabase,
+  google: SiGoogle,
 };
 
 export const getTechIcon = (tech) => {

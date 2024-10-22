@@ -3,35 +3,13 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { CgWebsite } from "react-icons/cg";
 import { BsGithub, BsYoutube } from "react-icons/bs";
-import { SiUnrealengine, SiMonogames, SiCss3, SiPhp, SiJavascript, SiCplusplus, SiC, SiPython } from "react-icons/si";
 import ProgressBar from "./ProgressBar";
 import { Link } from "react-router-dom";
+import { getTechIcon } from "../utils/getTechIcons";
+
 
 function ProjectCards(props) {
   const [isFlipped, setIsFlipped] = useState(false);
-
-  const getTechIcon = (tech) => {
-    switch (tech) {
-      case "unreal":
-        return <SiUnrealengine />;
-      case "monogame":
-        return <SiMonogames />;
-      case "css":
-        return <SiCss3 />;
-      case "php":
-        return <SiPhp />;
-      case "javascript":
-        return <SiJavascript />;
-      case "cpp":
-        return <SiCplusplus />;
-      case "c":
-        return <SiC />;
-      case "python":
-        return <SiPython />;
-      default:
-        return null;
-    }
-  };
 
   return (
     <div className={`project-card ${isFlipped ? "flipped" : ""}`} onClick={() => setIsFlipped(!isFlipped)}>
