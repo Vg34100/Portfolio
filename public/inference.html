@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inference Network Visualizer</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #69b3a2;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #5a9b8f;
+        }
+        .node circle {
+            fill: #69b3a2;
+            stroke: #333;
+            stroke-width: 2px;
+        }
+        .link line {
+            stroke: #999;
+            stroke-opacity: 0.6;
+            stroke-width: 2px;
+            marker-end: url(#arrowhead);
+        }
+        .label {
+            font-size: 14px;
+            fill: black;
+        }
+        .operator {
+            fill: #ffcc00;
+            stroke: #333;
+            stroke-width: 2px;
+        }
+        .calculated {
+            fill: #f39c12;
+        }
+    </style>
+</head>
+<body>
+    <h2>Inference Network Visualizer</h2>
+    <div class="container">
+        <textarea id="rulesInput" placeholder="Enter rules here (e.g., R1: x -> y (0.9) or R3: b AND d -> f (0.5))" rows="5"></textarea><br><br>
+        <textarea id="factsInput" placeholder="Enter facts here (e.g., x (-0.5))" rows="5"></textarea><br><br>
+        <button onclick="generateNetwork()">Generate Network</button>
+    </div>
+    <svg width="1000" height="700"></svg>
+    <script>
+        function parseInput(input) {
+            let lines = input.split('\n');
+            let parsed = [];
+            lines.forEach(line => {
+                let match = line.match(/(\w+|\w+( AND \w+)+|\w+( OR \w+)+) *-> *(\w+) *\(([-+]?[0-9]*\.?[0-9]+)\)/);
+                if (match) {
+                    parsed.push({ source: match[1], target: match[4], confidence: parseFloat(match[5]) });
+                }
+            });
+            return parsed;
+        }
+
+        function parseFacts(input) {
+            let lines = input.split('\n');
+            let parsed = {};
+            lines.forEach(line => {
+                let match = line.match(/(\w+) *\(([-+]?[0-9]*\.?[0-9]+)\)/);
+                if (match) {
+                    parsed[match[1]] = parseFloat(match[2]);
+                }
+            });
+            return parsed;
+        }
+
+        function calculateConfidences(rules, facts) {
+            let updatedFacts = { ...facts };
+            let unresolvedRules = rules.slice();
+            let maxIterations = 100;
+            let iteration = 0;
+
+            while (unresolvedRules.length > 0 && iteration < maxIterations) {
+                let remainingRules = [];
+                unresolvedRules.forEach(rule => {
+                    let sources = rule.source.split(/ AND | OR /);
+                    let allPresent = sources.every(src => src in updatedFacts);
+                    if (allPresent) {
+                        let sourceValues = sources.map(src => updatedFacts[src]);
+                        let cf;
+                        if (rule.source.includes("AND")) {
+                            cf = Math.min(...sourceValues) * rule.confidence;
+                        } else if (rule.source.includes("OR")) {
+                            cf = Math.max(...sourceValues) * rule.confidence;
+                        } else {
+                            cf = sourceValues[0] * rule.confidence;
+                        }
+
+                        if (rule.target in updatedFacts) {
+                            if (cf > 0 && updatedFacts[rule.target] > 0) {
+                                cf = updatedFacts[rule.target] + cf * (1 -updatedFacts[rule.target]);
+                            }
+                            else if (cf < 0 && updatedFacts[rule.target] < 0) {
+                                cf =  updatedFacts[rule.target] + cf * (1 + updatedFacts[rule.target]);
+                            }
+                            else {
+                                cf = ( updatedFacts[rule.target] + cf)/(1 - Math.min(Math.abs(updatedFacts[rule.target], cf)))
+                            }
+                        }
+
+                        updatedFacts[rule.target] = cf;
+                    } else {
+                        remainingRules.push(rule);
+                    }
+                });
+                unresolvedRules = remainingRules;
+                iteration++;
+            }
+
+            return updatedFacts;
+        }
+
+        function generateNetwork() {
+            let rules = parseInput(document.getElementById("rulesInput").value);
+            let facts = parseFacts(document.getElementById("factsInput").value);
+            let calculatedFacts = calculateConfidences(rules, facts);
+
+            let nodes = {};
+            let linksArray = [];
+            let operatorNodes = [];
+            rules.forEach(rule => {
+                let sources = rule.source.split(/ AND | OR /);
+                let operatorType = rule.source.includes("AND") ? "AND" : rule.source.includes("OR") ? "OR" : null;
+                if (operatorType) {
+                    let operatorNodeId = `${rule.source} -> ${rule.target}`;
+                    operatorNodes.push({ id: operatorNodeId, label: operatorType });
+                    sources.forEach(source => {
+                        nodes[source] = { id: source, confidence: calculatedFacts[source] || 0 };
+                        linksArray.push({ source: source, target: operatorNodeId, confidence: rule.confidence });
+                    });
+                    nodes[rule.target] = { id: rule.target, confidence: calculatedFacts[rule.target] || 0 };
+                    linksArray.push({ source: operatorNodeId, target: rule.target, confidence: rule.confidence });
+                } else {
+                    sources.forEach(source => {
+                        nodes[source] = { id: source, confidence: calculatedFacts[source] || 0 };
+                        nodes[rule.target] = { id: rule.target, confidence: calculatedFacts[rule.target] || 0 };
+                        linksArray.push({ source: source, target: rule.target, confidence: rule.confidence });
+                    });
+                }
+            });
+
+            let nodesArray = Object.values(nodes).concat(operatorNodes);
+
+            let svg = d3.select("svg"),
+                width = +svg.attr("width"),
+                height = +svg.attr("height");
+
+            svg.selectAll("*").remove();
+
+            svg.append("defs").append("marker")
+                .attr("id", "arrowhead")
+                .attr("viewBox", "0 -5 10 10")
+                .attr("refX", 15)
+                .attr("refY", 0)
+                .attr("markerWidth", 6)
+                .attr("markerHeight", 6)
+                .attr("orient", "auto")
+                .append("path")
+                .attr("d", "M0,-5L10,0L0,5")
+                .attr("fill", "#999");
+
+            let simulation = d3.forceSimulation(nodesArray)
+                .force("link", d3.forceLink(linksArray).id(d => d.id).distance(150))
+                .force("charge", d3.forceManyBody().strength(-400))
+                .force("center", d3.forceCenter(width / 2, height / 2));
+
+            let link = svg.append("g")
+                .attr("class", "link")
+                .selectAll("line")
+                .data(linksArray)
+                .enter().append("line");
+
+            let node = svg.append("g")
+                .attr("class", "node")
+                .selectAll("g")
+                .data(nodesArray)
+                .enter().append("g");
+
+            node.each(function(d) {
+                if (d.label) {
+                    d3.select(this).append("rect")
+                        .attr("class", "operator")
+                        .attr("width", 50)
+                        .attr("height", 50)
+                        .attr("x", -25)
+                        .attr("y", -25);
+                } else {
+                    d3.select(this).append("circle")
+                        .attr("r", 40)
+                        .classed("calculated", !(d.id in facts));
+                }
+            });
+
+            node.call(d3.drag()
+                .on("start", dragStarted)
+                .on("drag", dragged)
+                .on("end", dragEnded));
+
+            let labels = node.append("text")
+                .attr("class", "label")
+                .attr("text-anchor", "middle")
+                .attr("dy", "0.35em")
+                .text(d => d.label ? d.label : `${d.id} (${d.confidence.toFixed(2)})`);
+
+            let linkLabels = svg.append("g")
+                .selectAll("text")
+                .data(linksArray)
+                .enter().append("text")
+                .attr("class", "label")
+                .attr("text-anchor", "middle")
+                .text(d => `(${d.confidence})`);
+
+            simulation.on("tick", () => {
+                link
+                    .attr("x1", d => d.source.x)
+                    .attr("y1", d => d.source.y)
+                    .attr("x2", d => d.target.x)
+                    .attr("y2", d => d.target.y);
+
+                node.attr("transform", d => `translate(${d.x},${d.y})`);
+
+                linkLabels
+                    .attr("x", d => (d.source.x + d.target.x) / 2)
+                    .attr("y", d => (d.source.y + d.target.y) / 2);
+            });
+
+            function dragStarted(event, d) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            }
+
+            function dragged(event, d) {
+                d.fx = event.x;
+                d.fy = event.y;
+            }
+
+            function dragEnded(event, d) {
+                if (!event.active) simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+        }
+    </script>
+</body>
+</html>

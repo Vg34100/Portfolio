@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Projects from "./components/Projects/Projects";
+import Inference from "./components/Projects/ProjectPages/Inference";
 import Footer from "./components/Footer";
 import {
   BrowserRouter as Router,
@@ -47,6 +48,7 @@ function App() {
 
           <Route path="/arcadia" element={<Arcadia />} />
           <Route path="/deep" element={<DEEP />} />
+          <Route path="/inference" element={<Inference />} />
 
 
           <Route path="*" element={<Navigate to="/"/>} />
