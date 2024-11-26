@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html data-theme="light">
+<head>
+    <title>Perceptron Solver</title>
+    <style>
+        :root[data-theme="light"] {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --border-color: #cccccc;
+            --input-bg: #f5f5f5;
+            --hover-color: #e0e0e0;
+        }
+        
+        :root[data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --border-color: #444444;
+            --input-bg: #2d2d2d;
+            --hover-color: #3d3d3d;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-color);
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        .section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .flex-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        input, select {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: var(--input-bg);
+            color: var(--text-color);
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        #perceptronCanvas {
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        .output {
+            white-space: pre-wrap;
+            background: var(--input-bg);
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .example-btn {
+            background: #2196F3;
+        }
+
+        .example-btn:hover {
+            background: #1976D2;
+        }
+
+                :root[data-theme="light"] {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --node-fill: #4CAF50;
+            --node-stroke: #45a049;
+            --line-color: #666666;
+        }
+        
+        :root[data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --node-fill: #45a049;
+            --node-stroke: #4CAF50;
+            --line-color: #999999;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid var(--line-color);
+            border-radius: 8px;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid var(--line-color);
+            border-radius: 4px;
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            background: var(--node-fill);
+            color: white;
+            cursor: pointer;
+        }
+
+        #networkDiagram {
+            width: 100%;
+            height: 300px;
+            margin: 20px 0;
+        }
+
+        .node {
+            fill: var(--node-fill);
+            stroke: var(--node-stroke);
+            stroke-width: 2;
+        }
+
+        .line {
+            stroke: var(--line-color);
+            stroke-width: 2;
+        }
+
+        .text {
+            fill: var(--text-color);
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    <h1>Perceptron Solver</h1>
+
+    <div class="section">
+        <h2>Inputs</h2>
+        <div class="flex-container">
+            <div>
+                <label>X₁:</label>
+                <input type="number" id="x1" value="1" step="any">
+            </div>
+            <div>
+                <label>X₂:</label>
+                <input type="number" id="x2" value="1" step="any">
+            </div>
+            <div>
+                <label>W₁:</label>
+                <input type="number" id="w1" value="0.5" step="any">
+            </div>
+            <div>
+                <label>W₂:</label>
+                <input type="number" id="w2" value="0.5" step="any">
+            </div>
+            <div>
+                <label>Threshold θ:</label>
+                <input type="number" id="threshold" value="1" step="any">
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Activation Function</h2>
+        <select id="activationFunction">
+            <option value="step">Step Function</option>
+            <option value="sign">Sign Function (-1/+1)</option>
+        </select>
+    </div>
+
+    <div class="section">
+        <h2>Examples</h2>
+        <button class="example-btn" onclick="loadExample('AND')">AND Gate</button>
+        <button class="example-btn" onclick="loadExample('OR')">OR Gate</button>
+        <button class="example-btn" onclick="loadExample('NAND')">NAND Gate</button>
+        <button class="example-btn" onclick="loadExample('XOR')">XOR Gate (Not Linearly Separable)</button>
+    </div>
+
+    <div class="section">
+        <button onclick="solve()">Solve</button>
+        <canvas id="perceptronCanvas" width="400" height="400"></canvas>
+        <div id="output" class="output"></div>
+    </div>
+
+    <div class="section">
+        <button onclick="updateDiagram()">Update</button>
+        <svg id="networkDiagram" viewBox="0 0 800 300">
+            <!-- Input Layer -->
+            <circle class="node" cx="100" cy="100" r="20"/>
+            <circle class="node" cx="100" cy="200" r="20"/>
+            
+            <!-- Hidden Layer (Sum) -->
+            <circle class="node" cx="400" cy="150" r="25"/>
+            
+            <!-- Output Layer -->
+            <circle class="node" cx="700" cy="150" r="20"/>
+            
+            <!-- Connections -->
+            <line class="line" x1="120" y1="100" x2="375" y2="150"/>
+            <line class="line" x1="120" y1="200" x2="375" y2="150"/>
+            <line class="line" x1="425" y1="150" x2="680" y2="150"/>
+            
+            <!-- Labels -->
+            <text class="text" x="70" y="105" text-anchor="end">X₁</text>
+            <text class="text" x="70" y="205" text-anchor="end">X₂</text>
+            
+            <text class="text" x="200" y="90" id="w1Label">w₁=0.5</text>
+            <text class="text" x="200" y="220" id="w2Label">w₂=-0.3</text>
+            
+            <text class="text" x="400" y="155" text-anchor="middle" id="sumLabel">Sum(0)</text>
+            
+            <text class="text" x="550" y="140">Compare with</text>
+            <text class="text" x="550" y="160" id="thresholdLabel">θ=0.2</text>
+            
+            <text class="text" x="700" y="155" text-anchor="middle" id="outputLabel">0</text>
+        </svg>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+        }
+
+        function drawPerceptron(canvas, w1, w2, threshold, x1, x2) {
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            // Clear canvas
+            ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--bg-color');
+            ctx.fillRect(0, 0, width, height);
+            
+            // Draw grid
+            ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue('--border-color');
+            ctx.lineWidth = 0.5;
+            for(let i = 0; i <= width; i += 40) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i, height);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(0, i);
+                ctx.lineTo(width, i);
+                ctx.stroke();
+            }
+
+            // Draw axes
+            ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue('--text-color');
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(width/2, 0);
+            ctx.lineTo(width/2, height);
+            ctx.moveTo(0, height/2);
+            ctx.lineTo(width, height/2);
+            ctx.stroke();
+
+            // Draw decision boundary
+            ctx.strokeStyle = '#4CAF50';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            
+            // Decision boundary equation: w1*x1 + w2*x2 = threshold
+            // Rearranging for x2: x2 = (-w1*x1 + threshold)/w2
+            const x1Points = [-5, 5];
+            x1Points.forEach(x => {
+                let x1Canvas = x * 40 + width/2;
+                let x2 = (-w1*x + threshold)/w2;
+                let x2Canvas = -x2 * 40 + height/2;
+                
+                if (ctx.lineTo) {
+                    ctx.lineTo(x1Canvas, x2Canvas);
+                } else {
+                    ctx.moveTo(x1Canvas, x2Canvas);
+                }
+            });
+            ctx.stroke();
+
+            // Draw current input point
+            ctx.fillStyle = '#2196F3';
+            ctx.beginPath();
+            ctx.arc(x1 * 40 + width/2, -x2 * 40 + height/2, 5, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function solve() {
+            const x1 = parseFloat(document.getElementById('x1').value);
+            const x2 = parseFloat(document.getElementById('x2').value);
+            const w1 = parseFloat(document.getElementById('w1').value);
+            const w2 = parseFloat(document.getElementById('w2').value);
+            const threshold = parseFloat(document.getElementById('threshold').value);
+            const activationType = document.getElementById('activationFunction').value;
+
+            let output = "=== PERCEPTRON CALCULATION ===\n\n";
+            
+            // Calculate weighted sum
+            const weightedSum = w1*x1 + w2*x2;
+            output += `Weighted Sum = w₁x₁ + w₂x₂\n`;
+            output += `             = (${w1})(${x1}) + (${w2})(${x2})\n`;
+            output += `             = ${weightedSum}\n\n`;
+            
+            // Apply activation function
+            let finalOutput;
+            if (activationType === 'step') {
+                finalOutput = weightedSum >= threshold ? 1 : 0;
+                output += `Step Function Output (threshold = ${threshold}):\n`;
+                output += `f(x) = ${weightedSum} ${weightedSum >= threshold ? '>=' : '<'} ${threshold}\n`;
+                output += `f(x) = ${finalOutput}`;
+            } else {
+                finalOutput = weightedSum >= threshold ? 1 : -1;
+                output += `Sign Function Output (threshold = ${threshold}):\n`;
+                output += `f(x) = ${weightedSum} ${weightedSum >= threshold ? '>=' : '<'} ${threshold}\n`;
+                output += `f(x) = ${finalOutput}`;
+            }
+
+            document.getElementById('output').textContent = output;
+            
+            // Draw perceptron visualization
+            const canvas = document.getElementById('perceptronCanvas');
+            drawPerceptron(canvas, w1, w2, threshold, x1, x2);
+        }
+
+        function loadExample(type) {
+            switch(type) {
+                case 'AND':
+                    document.getElementById('w1').value = "0.5";
+                    document.getElementById('w2').value = "0.5";
+                    document.getElementById('threshold').value = "0.8";
+                    document.getElementById('activationFunction').value = "step";
+                    break;
+                case 'OR':
+                    document.getElementById('w1').value = "0.5";
+                    document.getElementById('w2').value = "0.5";
+                    document.getElementById('threshold').value = "0.3";
+                    document.getElementById('activationFunction').value = "step";
+                    break;
+                case 'NAND':
+                    document.getElementById('w1').value = "-0.5";
+                    document.getElementById('w2').value = "-0.5";
+                    document.getElementById('threshold').value = "-0.8";
+                    document.getElementById('activationFunction').value = "step";
+                    break;
+                case 'XOR':
+                    document.getElementById('w1').value = "1";
+                    document.getElementById('w2').value = "1";
+                    document.getElementById('threshold').value = "0.5";
+                    document.getElementById('activationFunction').value = "step";
+                    break;
+            }
+            solve();
+        }
+
+        function updateDiagram() {
+            const x1 = parseFloat(document.getElementById('x1').value);
+            const x2 = parseFloat(document.getElementById('x2').value);
+            const w1 = parseFloat(document.getElementById('w1').value);
+            const w2 = parseFloat(document.getElementById('w2').value);
+            const threshold = parseFloat(document.getElementById('threshold').value);
+
+            // Update labels
+            document.getElementById('w1Label').textContent = `w₁=${w1}`;
+            document.getElementById('w2Label').textContent = `w₂=${w2}`;
+            document.getElementById('thresholdLabel').textContent = `θ=${threshold}`;
+
+            // Calculate sum
+            const sum = x1 * w1 + x2 * w2;
+            document.getElementById('sumLabel').textContent = `Sum(${sum.toFixed(2)})`;
+
+            // Calculate output
+            const output = sum >= threshold ? 1 : 0;
+            document.getElementById('outputLabel').textContent = output;
+
+            // Add animation effect
+            const nodes = document.querySelectorAll('.node');
+            nodes.forEach(node => {
+                node.style.transition = 'fill 0.3s';
+                node.style.fill = 'var(--node-fill)';
+                setTimeout(() => {
+                    node.style.fill = 'var(--node-stroke)';
+                }, 100);
+                setTimeout(() => {
+                    node.style.fill = 'var(--node-fill)';
+                }, 300);
+            });
+        }
+
+        // Initial update
+        updateDiagram();
+
+        // Initial solve
+        solve();
+    </script>
+</body>
+</html>
