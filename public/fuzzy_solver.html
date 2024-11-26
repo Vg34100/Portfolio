@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fuzzy Logic Problem Solver</title>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --border-color: #cccccc;
+            --input-bg: #f5f5f5;
+            --hover-color: #e0e0e0;
+        }
+
+        :root[data-theme="light"] {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --border-color: #cccccc;
+            --input-bg: #f5f5f5;
+            --hover-color: #e0e0e0;
+        }
+        
+        :root[data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --border-color: #444444;
+            --input-bg: #2d2d2d;
+            --hover-color: #3d3d3d;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-color);
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+        }
+        .flex-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .input-group {
+            margin: 10px 0;
+        }
+        button {
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        #outputText {
+            white-space: pre-wrap;
+            background: var(--text-color);
+            color: var(--bg-color);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .set-container {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    <h1>Fuzzy Logic Problem Solver</h1>
+    
+    <div class="section">
+        <h2>Configuration</h2>
+        <div class="flex-container">
+            <div>
+                <label>Inference System:</label>
+                <select id="inferenceSystem">
+                    <option value="mamdani">Mamdani</option>
+                    <option value="sugeno">Sugeno</option>
+                </select>
+            </div>
+            <div>
+                <label>Aggregation Method:</label>
+                <select id="aggregationMethod">
+                    <option value="maximum">Maximum</option>
+                    <option value="summation">Summation</option>
+                </select>
+            </div>
+            <div>
+                <label>Defuzzification Method:</label>
+                <select id="defuzzificationMethod">
+                    <option value="cog-sum">Center of Gravity (Summation)</option>
+                    <option value="cog-integral">Center of Gravity (Integral)</option>
+                    <option value="mom">Mean of Maximum</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Input Variables</h2>
+        <div id="inputSets">
+            <div class="set-container">
+                <h3>Input Variable 1</h3>
+                <div class="input-group">
+                    <label>Name:</label>
+                    <input type="text" id="input1Name" value="Temperature">
+                </div>
+                <div class="input-group">
+                    <label>Range:</label>
+                    <input type="number" id="input1Min" placeholder="Min" value="15">
+                    <input type="number" id="input1Max" placeholder="Max" value="30">
+                </div>
+                <div class="input-group">
+                    <label>Current Value:</label>
+                    <input type="number" id="input1Value" value="24">
+                </div>
+                <div class="input-group">
+                    <h4>Fuzzy Sets</h4>
+                    <textarea id="input1Sets" rows="3" cols="40">COOL: (15,1), (20,1), (23,0)
+MODERATE: (20,0), (23,1), (26,0)
+HOT: (23,0), (26,1), (30,1)</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Output Variable</h2>
+        <div class="set-container">
+            <div class="input-group">
+                <label>Name:</label>
+                <input type="text" id="outputName" value="Fan Speed">
+            </div>
+            <div class="input-group">
+                <label>Range:</label>
+                <input type="number" id="outputMin" placeholder="Min" value="0">
+                <input type="number" id="outputMax" placeholder="Max" value="100">
+            </div>
+            <div class="input-group">
+                <h4>Fuzzy Sets</h4>
+                <textarea id="outputSets" rows="3" cols="40">LOW: (0,1), (30,1), (50,0)
+MEDIUM: (30,0), (50,1), (70,0)
+HIGH: (50,0), (70,1), (100,1)</textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Rules</h2>
+        <textarea id="rules" rows="3" cols="40">IF temperature is COOL THEN fan speed is LOW
+IF temperature is MODERATE THEN fan speed is MEDIUM
+IF temperature is HOT THEN fan speed is HIGH</textarea>
+    </div>
+
+    <div class="section">
+        <h2>Example Problems</h2>
+        <button onclick="window.loadExample1()">AC Controller</button>
+        <button onclick="window.loadExample2()">Water Level Controller</button>
+        <button onclick="window.loadExample3()">Light Dimmer</button>
+    </div>
+
+    <div class="section">
+        <button onclick="window.solveProblem()">Solve Problem</button>
+        <div id="outputText"></div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+        }
+
+        // Helper function to calculate area of a trapezoid
+        function trapezoidArea(points) {
+            let area = 0;
+            for (let i = 0; i < points.length - 1; i++) {
+                area += (points[i].y + points[i+1].y) * (points[i+1].x - points[i].x) / 2;
+            }
+            return area;
+        }
+    
+        // Helper function to calculate centroid of a trapezoid
+        function trapezoidCentroid(points) {
+            if (points.length < 2) return { x: points[0].x, y: points[0].y };
+            
+            let area = 0;
+            let weightedX = 0;
+            
+            // Calculate using simpler method for clipped fuzzy sets
+            for (let i = 0; i < points.length - 1; i++) {
+                const x1 = points[i].x;
+                const x2 = points[i+1].x;
+                const y1 = points[i].y;
+                const y2 = points[i+1].y;
+                
+                // Area of trapezoid
+                const segmentArea = (y1 + y2) * (x2 - x1) / 2;
+                
+                // Center of trapezoid
+                const segmentCentroidX = (x1 + x2) / 2;
+                
+                area += segmentArea;
+                weightedX += segmentArea * segmentCentroidX;
+            }
+            
+            // If area is 0, return center point
+            if (area === 0) {
+                return {
+                    x: (points[0].x + points[points.length-1].x) / 2,
+                    y: 0
+                };
+            }
+            
+            return {
+                x: weightedX / area,
+                y: area / (points[points.length-1].x - points[0].x)
+            };
+        }
+    
+        function parseFuzzySets(text) {
+            const sets = {};
+            const lines = text.trim().split('\n');
+            for (const line of lines) {
+                const [name, pointsStr] = line.split(':');
+                const points = pointsStr.match(/\([\d.]+,[\d.]+\)/g)
+                    .map(p => {
+                        const [x, y] = p.slice(1, -1).split(',').map(Number);
+                        return {x, y};
+                    });
+                sets[name.trim()] = points;
+            }
+            return sets;
+        }
+    
+        function getMembershipValue(value, points) {
+            for (let i = 0; i < points.length - 1; i++) {
+                if (value >= points[i].x && value <= points[i+1].x) {
+                    return points[i].y + 
+                        (points[i+1].y - points[i].y) * 
+                        (value - points[i].x) / 
+                        (points[i+1].x - points[i].x);
+                }
+            }
+            if (value <= points[0].x) return points[0].y;
+            if (value >= points[points.length - 1].x) return points[points.length - 1].y;
+            return 0;
+        }
+    
+        window.solveProblem = function() {
+            const outputDiv = document.getElementById('outputText');
+            let debug = "=== DEBUG INFORMATION ===\n\n";
+    
+            try {
+                // Get all inputs
+                const inputValue = parseFloat(document.getElementById('input1Value').value);
+                const inputSets = parseFuzzySets(document.getElementById('input1Sets').value);
+                const outputSets = parseFuzzySets(document.getElementById('outputSets').value);
+                const inferenceSystem = document.getElementById('inferenceSystem').value;
+                
+                debug += `Input Value: ${inputValue}\n\n`;
+                debug += "Input Sets Parsed:\n" + JSON.stringify(inputSets, null, 2) + "\n\n";
+                debug += "Output Sets Parsed:\n" + JSON.stringify(outputSets, null, 2) + "\n\n";
+    
+                // Step 1: Fuzzification
+                debug += "=== STEP 1: FUZZIFICATION ===\n";
+                const fuzzifiedInputs = {};
+                for (const [setName, points] of Object.entries(inputSets)) {
+                    const membershipValue = getMembershipValue(inputValue, points);
+                    fuzzifiedInputs[setName] = membershipValue;
+                    debug += `${setName}:\n`;
+                    debug += `  Points: ${JSON.stringify(points)}\n`;
+                    debug += `  Membership Value: ${membershipValue.toFixed(4)}\n`;
+                }
+                debug += "\nFuzzified Inputs:\n" + JSON.stringify(fuzzifiedInputs, null, 2) + "\n\n";
+    
+                // Step 2: Rule Evaluation
+                debug += "=== STEP 2: RULE EVALUATION ===\n";
+                const rules = document.getElementById('rules').value.split('\n');
+                const ruleOutputs = [];
+                
+                for (const rule of rules) {
+                    debug += `\nRule Text: "${rule}"\n`;
+                    
+                    const match = rule.match(/IF (.*?) is (\w+) THEN (.*?) is (\w+)/i);
+                    if (match) {
+                        const [_, inputVar, inputSet, outputVar, outputSet] = match;
+                        debug += `  Matched components:\n`;
+                        debug += `    Input Variable: ${inputVar}\n`;
+                        debug += `    Input Set: ${inputSet}\n`;
+                        debug += `    Output Variable: ${outputVar}\n`;
+                        debug += `    Output Set: ${outputSet}\n`;
+                        
+                        const strength = fuzzifiedInputs[inputSet];
+                        debug += `  Rule Strength: ${strength}\n`;
+                        
+                        if (outputSets[outputSet]) {
+                            const points = outputSets[outputSet];
+                            // For Mamdani, clip the output set
+                            let clippedPoints = [...points];
+                            if (inferenceSystem === 'mamdani') {
+                                clippedPoints = points.map(p => ({
+                                    x: p.x,
+                                    y: Math.min(p.y, strength)
+                                }));
+                            }
+                            const centroid = trapezoidCentroid(clippedPoints);
+                            debug += `  Output Set Points: ${JSON.stringify(points)}\n`;
+                            debug += `  Clipped Points: ${JSON.stringify(clippedPoints)}\n`;
+                            debug += `  Centroid: ${JSON.stringify(centroid)}\n`;
+                            
+                            ruleOutputs.push({
+                                outputSet,
+                                strength,
+                                points: clippedPoints,
+                                centroid
+                            });
+                        } else {
+                            debug += `  ERROR: Output set "${outputSet}" not found!\n`;
+                        }
+                    } else {
+                        debug += `  ERROR: Rule didn't match expected format\n`;
+                    }
+                }
+    
+                debug += "\nRule Outputs:\n" + JSON.stringify(ruleOutputs, null, 2) + "\n\n";
+    
+                // Step 3: Aggregation
+                debug += "=== STEP 3: AGGREGATION ===\n";
+                const aggregationMethod = document.getElementById('aggregationMethod').value;
+                debug += `Method: ${aggregationMethod}\n\n`;
+                
+                // Step 4: Defuzzification
+                debug += "=== STEP 4: DEFUZZIFICATION ===\n";
+                const defuzzificationMethod = document.getElementById('defuzzificationMethod').value;
+                debug += `Method: ${defuzzificationMethod}\n\n`;
+                
+                let finalOutput = 0;
+                if (defuzzificationMethod === 'cog-sum' && ruleOutputs.length > 0) {
+                    let numerator = 0;
+                    let denominator = 0;
+                    
+                    debug += "Center of Gravity Calculation:\n";
+                    for (const rule of ruleOutputs) {
+                        const contribution = rule.centroid.x * rule.strength;
+                        numerator += contribution;
+                        denominator += rule.strength;
+                        
+                        debug += `Rule for ${rule.outputSet}:\n`;
+                        debug += `  Centroid X: ${rule.centroid.x.toFixed(2)}\n`;
+                        debug += `  Strength: ${rule.strength.toFixed(4)}\n`;
+                        debug += `  Contribution to numerator: ${contribution.toFixed(4)}\n\n`;
+                    }
+                    
+                    debug += `Final CoG calculation:\n`;
+                    debug += `  Numerator: ${numerator.toFixed(4)}\n`;
+                    debug += `  Denominator: ${denominator.toFixed(4)}\n`;
+                    
+                    finalOutput = denominator !== 0 ? numerator / denominator : 0;
+                }
+                
+                debug += `\nFinal Output: ${finalOutput.toFixed(2)}\n`;
+    
+            } catch (error) {
+                debug += "\nERROR OCCURRED:\n" + error.toString() + "\n";
+                debug += "Stack Trace:\n" + error.stack + "\n";
+            }
+    
+            outputDiv.textContent = debug;
+        };
+    
+        // Example loaders (same as before)
+        window.loadExample1 = function() {
+            // Current AC Controller example values are already loaded by default
+        };
+    
+        window.loadExample2 = function() {
+            document.getElementById('input1Name').value = "Water Level";
+            document.getElementById('input1Min').value = "0";
+            document.getElementById('input1Max').value = "100";
+            document.getElementById('input1Value').value = "60";
+            document.getElementById('input1Sets').value = "LOW: (0,1), (30,1), (50,0)\nMEDIUM: (30,0), (50,1), (70,0)\nHIGH: (50,0), (70,1), (100,1)";
+            
+            document.getElementById('outputName').value = "Valve Opening";
+            document.getElementById('outputMin').value = "0";
+            document.getElementById('outputMax').value = "100";
+            document.getElementById('outputSets').value = "SMALL: (0,1), (20,1), (40,0)\nMEDIUM: (30,0), (50,1), (70,0)\nLARGE: (60,0), (80,1), (100,1)";
+            
+            document.getElementById('rules').value = "IF water level is LOW THEN valve opening is LARGE\nIF water level is MEDIUM THEN valve opening is MEDIUM\nIF water level is HIGH THEN valve opening is SMALL";
+        };
+    
+        window.loadExample3 = function() {
+            document.getElementById('input1Name').value = "Ambient Light";
+            document.getElementById('input1Min').value = "0";
+            document.getElementById('input1Max').value = "1000";
+            document.getElementById('input1Value').value = "400";
+            document.getElementById('input1Sets').value = "DARK: (0,1), (200,1), (400,0)\nMEDIUM: (200,0), (400,1), (600,0)\nBRIGHT: (400,0), (600,1), (1000,1)";
+            
+            document.getElementById('outputName').value = "Dimmer Level";
+            document.getElementById('outputMin').value = "0";
+            document.getElementById('outputMax').value = "100";
+            document.getElementById('outputSets').value = "LOW: (0,1), (25,1), (50,0)\nMEDIUM: (25,0), (50,1), (75,0)\nHIGH: (50,0), (75,1), (100,1)";
+            
+            document.getElementById('rules').value = "IF ambient light is DARK THEN dimmer level is HIGH\nIF ambient light is MEDIUM THEN dimmer level is MEDIUM\nIF ambient light is BRIGHT THEN dimmer level is LOW";
+        };
+    </script>
+    </body>
+    </html>

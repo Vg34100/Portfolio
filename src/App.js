@@ -4,7 +4,6 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Projects from "./components/Projects/Projects";
-import Inference from "./components/Projects/ProjectPages/Inference";
 import Footer from "./components/Footer";
 import {
   BrowserRouter as Router,
@@ -21,6 +20,8 @@ import Timeline from "./components/Timeline/Timeline";
 import Arcadia from "./components/Projects/ProjectPages/Arcadia";
 import DEEP from "./components/Projects/ProjectPages/DEEP";
 
+import Inference from "./components/Projects/ProjectPages/Inference";
+import FuzzySolver from "./components/Projects/ProjectPages/FuzzySolver";
 
 function App() {
   const [load, upadateLoad] = useState(true);
@@ -48,7 +49,9 @@ function App() {
 
           <Route path="/arcadia" element={<Arcadia />} />
           <Route path="/deep" element={<DEEP />} />
+
           <Route path="/inference" element={<Inference />} />
+          <Route path="/fuzzy" element={<FuzzySolver />} />
 
 
           <Route path="*" element={<Navigate to="/"/>} />
