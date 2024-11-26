@@ -22,6 +22,13 @@ import DEEP from "./components/Projects/ProjectPages/DEEP";
 
 import Inference from "./components/Projects/ProjectPages/Inference";
 import FuzzySolver from "./components/Projects/ProjectPages/FuzzySolver";
+import FuzzySolverAlt from "./components/Projects/ProjectPages/FuzzySolverAlternate";
+
+import PerceptronSolver from "./components/Projects/ProjectPages/PerceptronSolver";
+import PerceptronSolverAdv from "./components/Projects/ProjectPages/PerceptronSolverAdvanced";
+
+import EpochSolver from "./components/Projects/ProjectPages/EpochSolver";
+
 
 function App() {
   const [load, upadateLoad] = useState(true);
@@ -52,6 +59,10 @@ function App() {
 
           <Route path="/inference" element={<Inference />} />
           <Route path="/fuzzy" element={<FuzzySolver />} />
+          <Route path="/fuzzy-alt" element={<FuzzySolverAlt />} />
+          <Route path="/perceptron" element={<PerceptronSolver />} />
+          <Route path="/perceptron-adv" element={<PerceptronSolverAdv />} />
+          <Route path="/epoch" element={<EpochSolver />} />
 
 
           <Route path="*" element={<Navigate to="/"/>} />
