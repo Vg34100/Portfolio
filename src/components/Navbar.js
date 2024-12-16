@@ -11,6 +11,8 @@ import {
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
   AiOutlineUser,
+  AiOutlineExperiment,
+  AiOutlineBook
 } from "react-icons/ai";
 
 
@@ -94,7 +96,17 @@ function NavBar() {
               </Nav.Link>
             </Nav.Item>
 
+            <Nav.Item>
+              <Nav.Link as={Link} to="/tools" onClick={() => updateExpanded(false)}>
+                <AiOutlineExperiment style={{ marginBottom: "2px" }} /> Tools
+              </Nav.Link>
+            </Nav.Item>
 
+            <Nav.Item>
+              <Nav.Link as={Link} to="/knowledge" onClick={() => updateExpanded(false)}>
+                <AiOutlineBook style={{ marginBottom: "2px" }} /> Knowledge
+              </Nav.Link>
+            </Nav.Item>
 
             {/* <Nav.Item>
               <Nav.Link
