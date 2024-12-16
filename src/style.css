@@ -1,8 +1,8 @@
 html {
   --section-background-color: linear-gradient(
     to bottom left,
-    #08243794,
-    rgba(4, 8, 32, 0.904)
+    #03111a94,
+    rgba(1, 3, 7, 0.904)
   );
 
   --image-gradient: linear-gradient(
@@ -825,3 +825,112 @@ button:focus {
 
 /*  */
 
+/* styling for tools and ai pages */
+/* Tool section general styling */
+.tool-section {
+  position: relative !important;
+  padding-top: 150px !important;
+  padding-bottom: 30px !important;
+  background-image: var(--section-background-color) !important;
+}
+
+/* Tool category card styling */
+.tool-category-card {
+  background: rgba(38, 194, 222, 0.05) !important;
+  border: 2px solid rgba(38, 194, 222, 0.1) !important;
+  border-radius: 15px !important;
+  transition: all 0.3s ease !important;
+  height: 100% !important;
+  padding: 1.5rem !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.tool-category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(38, 194, 222, 0.1) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tool-category-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 10px 20px rgba(38, 194, 222, 0.2) !important;
+  border-color: rgba(38, 194, 222, 0.3) !important;
+}
+
+.tool-category-card:hover::before {
+  opacity: 1;
+}
+
+/* Tool item card styling */
+.tool-item-card {
+  background: rgba(15, 23, 29, 0.7) !important;
+  border: 1px solid rgba(38, 194, 222, 0.2) !important;
+  border-radius: 10px !important;
+  transition: all 0.3s ease !important;
+  margin-bottom: 1rem !important;
+  padding: 1rem !important;
+}
+
+.tool-item-card:hover {
+  transform: scale(1.02) !important;
+  box-shadow: 0 5px 15px rgba(38, 194, 222, 0.15) !important;
+  background: rgba(15, 23, 29, 0.9) !important;
+}
+
+/* Tool category icon */
+.tool-category-icon {
+  font-size: 2.5rem !important;
+  margin-bottom: 1rem !important;
+  color: #26c2de !important;
+}
+
+/* Tool category title */
+.tool-category-title {
+  font-size: 1.5rem !important;
+  color: #26c2de !important;
+  margin-bottom: 1rem !important;
+  font-weight: 600 !important;
+}
+
+/* Tool category description */
+.tool-category-description {
+  color: #ffffff !important;
+  font-size: 1rem !important;
+  margin-bottom: 1.5rem !important;
+  opacity: 0.9 !important;
+}
+
+/* Tool count badge */
+.tool-count-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(38, 194, 222, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  color: #26c2de;
+}
+
+/* Coming soon overlay */
+.coming-soon-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 29, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #26c2de;
+  border-radius: 15px;
+}

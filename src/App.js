@@ -4,7 +4,6 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Projects from "./components/Projects/Projects";
-import Inference from "./components/Projects/ProjectPages/Inference";
 import Footer from "./components/Footer";
 import {
   BrowserRouter as Router,
@@ -20,6 +19,24 @@ import Timeline from "./components/Timeline/Timeline";
 
 import Arcadia from "./components/Projects/ProjectPages/Arcadia";
 import DEEP from "./components/Projects/ProjectPages/DEEP";
+
+import FuzzySolver from "./components/Tools/AI/FuzzyLogic/FuzzySolver";
+import FuzzySolverAlternate from "./components/Tools/AI/FuzzyLogic/FuzzySolverAlternate";
+
+import Perceptron from "./components/Tools/AI/NeuralNetworks/Perceptron";
+import PerceptronAdvanced from "./components/Tools/AI/NeuralNetworks/PerceptronAdvanced";
+
+import EpochSolver from "./components/Tools/AI/NeuralNetworks/EpochSolver";
+
+// =
+import Bidirectional from "./components/Tools/AI/NeuralNetworks/Bidirectional";
+import Genetics from "./components/Tools/AI/GeneticAlgorithms/Genetics";
+import GeneticsCustom from "./components/Tools/AI/GeneticAlgorithms/GeneticsCustom";
+import Hopfield from "./components/Tools/AI/NeuralNetworks/Hopfield";
+
+import GeneralAI from "./components/Tools/AI/GeneralAI";
+import Inference from "./components/Tools/AI/LogicSystems/Inference";
+import Tools from "./components/Tools/Tools";
 
 
 function App() {
@@ -48,8 +65,34 @@ function App() {
 
           <Route path="/arcadia" element={<Arcadia />} />
           <Route path="/deep" element={<DEEP />} />
-          <Route path="/inference" element={<Inference />} />
+          
+          <Route path="/tools" element={<Tools />} />
+          <Route path="/tools/ai" element={<GeneralAI />} />
+          {/* <Route path="/articles" element={<ArticleList />} /> */}
 
+          <Route path="/tools/ai/neural/bidirectional" element={<Bidirectional />} />
+          <Route path="/tools/ai/neural/hopfield" element={<Hopfield />} />
+          <Route path="/tools/ai/neural/perceptron" element={<Perceptron />} />
+          <Route path="/tools/ai/neural/perceptron-advanced" element={<PerceptronAdvanced />} />
+          <Route path="/tools/ai/neural/epoch" element={<EpochSolver />} />
+          <Route path="/tools/ai/genetic/basic" element={<Genetics />} />
+          <Route path="/tools/ai/genetic/custom" element={<GeneticsCustom />} />
+          <Route path="/tools/ai/fuzzy/basic" element={<FuzzySolver />} />
+          <Route path="/tools/ai/fuzzy/alternate" element={<FuzzySolverAlternate />} />
+          <Route path="/tools/ai/logic/inference" element={<Inference />} />
+
+          {/* <Route path="/inference" element={<Inference />} />
+          <Route path="/fuzzy" element={<FuzzySolver />} />
+          <Route path="/fuzzy-alt" element={<FuzzySolverAlt />} />
+          <Route path="/perceptron" element={<PerceptronSolver />} />
+          <Route path="/perceptron-adv" element={<PerceptronSolverAdv />} />
+          <Route path="/epoch" element={<EpochSolver />} />
+
+          
+          <Route path="/bidirectional" element={<Bidirectional />} />
+          <Route path="/genetics" element={<Genetics />} />
+          <Route path="/genetics-custom" element={<GeneticsCustom />} />
+          <Route path="/hopfield" element={<Hopfield />} /> */}
 
           <Route path="*" element={<Navigate to="/"/>} />
         </Routes>
