@@ -1,20 +1,20 @@
+// components/Projects/ProjectPages/Genetics.js
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Particle from "../../Particle";
-import DropIn from "../../DropIn";
+import Particle from "../../../Particle";
+import DropIn from "../../../DropIn";
 
-function EpochSolver() {
+function Genetics() {
   return (
     <section>
-      {/* <Container fluid className="home-section" id="home"> */}
-        <Particle /> {/* Particle effect for consistency */}
+        <Particle />
         <Container className="home-content">
           <DropIn> 
             <Row className="justify-content-center">
               <Col md={10}>
                 <div style={{ height: "80vh", width: "100%", position: "relative", zIndex: 1 }}>
                   <iframe
-                    src="/epoch_solver.html"
+                    src="/genetics.html"
                     style={{
                       width: "100%",
                       height: "100%",
@@ -24,16 +24,15 @@ function EpochSolver() {
                       position: "relative",
                       zIndex: 2
                     }}
-                    title="Epoch Solver"
+                    title="Genetic Algorithm"
                   />
                 </div>
               </Col>
             </Row>
           </DropIn>
         </Container>
-      {/* </Container> */}
     </section>
   );
 }
 
-export default EpochSolver;
+export default Genetics;

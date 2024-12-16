@@ -1,9 +1,9 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Particle from "../../Particle";
-import DropIn from "../../DropIn";
+import Particle from "../../../Particle";
+import DropIn from "../../../DropIn";
 
-function PerceptronSolverAdvanced() {
+function PerceptronAdvanced() {
   return (
     <section>
       {/* <Container fluid className="home-section" id="home"> */}
@@ -36,4 +36,4 @@ function PerceptronSolverAdvanced() {
   );
 }
 
-export default PerceptronSolverAdvanced;
+export default PerceptronAdvanced;

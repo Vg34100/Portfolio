@@ -1,9 +1,9 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Particle from "../../Particle";
-import DropIn from "../../DropIn";
+import Particle from "../../../Particle";
+import DropIn from "../../../DropIn";
 
-function PerceptronSolver() {
+function EpochSolver() {
   return (
     <section>
       {/* <Container fluid className="home-section" id="home"> */}
@@ -14,7 +14,7 @@ function PerceptronSolver() {
               <Col md={10}>
                 <div style={{ height: "80vh", width: "100%", position: "relative", zIndex: 1 }}>
                   <iframe
-                    src="/perceptron_solver.html"
+                    src="/epoch_solver.html"
                     style={{
                       width: "100%",
                       height: "100%",
@@ -24,7 +24,7 @@ function PerceptronSolver() {
                       position: "relative",
                       zIndex: 2
                     }}
-                    title="Perceptron Solver"
+                    title="Epoch Solver"
                   />
                 </div>
               </Col>
@@ -36,4 +36,4 @@ function PerceptronSolver() {
   );
 }
 
-export default PerceptronSolver;
+export default EpochSolver;

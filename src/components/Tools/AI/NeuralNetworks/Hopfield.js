@@ -1,10 +1,10 @@
-// components/Projects/ProjectPages/Bidirectional.js
+// components/Projects/ProjectPages/Hopfield.js
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Particle from "../../Particle";
-import DropIn from "../../DropIn";
+import Particle from "../../../Particle";
+import DropIn from "../../../DropIn";
 
-function Bidirectional() {
+function Hopfield() {
   return (
     <section>
         <Particle />
@@ -14,7 +14,7 @@ function Bidirectional() {
               <Col md={10}>
                 <div style={{ height: "80vh", width: "100%", position: "relative", zIndex: 1 }}>
                   <iframe
-                    src="/bidirectional.html"
+                    src="/hopfield.html"
                     style={{
                       width: "100%",
                       height: "100%",
@@ -24,7 +24,7 @@ function Bidirectional() {
                       position: "relative",
                       zIndex: 2
                     }}
-                    title="Bidirectional Neural Network"
+                    title="Hopfield Network"
                   />
                 </div>
               </Col>
@@ -35,4 +35,4 @@ function Bidirectional() {
   );
 }
 
-export default Bidirectional;
+export default Hopfield;
