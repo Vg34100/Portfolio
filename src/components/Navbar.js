@@ -11,6 +11,7 @@ import {
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
   AiOutlineUser,
+  AiOutlineExperiment
 } from "react-icons/ai";
 
 
@@ -94,7 +95,11 @@ function NavBar() {
               </Nav.Link>
             </Nav.Item>
 
-
+            <Nav.Item>
+              <Nav.Link as={Link} to="/tools" onClick={() => updateExpanded(false)}>
+                <AiOutlineExperiment style={{ marginBottom: "2px" }} /> Tools
+              </Nav.Link>
+            </Nav.Item>
 
             {/* <Nav.Item>
               <Nav.Link
