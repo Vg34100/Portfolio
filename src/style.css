@@ -1074,3 +1074,21 @@ button:focus {
     max-width: 100%;
   }
 }
+
+/* Markdown */
+.knowledge-card .card-body {
+  text-align: left;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content p,
+.markdown-content li,
+.markdown-content blockquote {
+  text-align: left;
+}
+
+.sidebar-link {
+  text-align: left;
+}

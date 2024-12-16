@@ -13,9 +13,9 @@ function DocumentationList() {
     {
       title: "Unreal Engine Fundamentals",
       description: "Comprehensive documentation of Unreal Engine basics and core concepts",
-      path: "/knowledge/docs/unreal-engine",
+      path: "/knowledge/docs/unreal-engine-fundamentals",
       chapters: ["Getting Started", "Engine Basics", "Blueprint System"],
-      isAvailable: false
+      isAvailable: true
     },
     {
       title: "OpenGL Graphics Guide",

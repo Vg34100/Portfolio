@@ -38,23 +38,17 @@ import GeneralAI from "./components/Tools/AI/GeneralAI";
 import Inference from "./components/Tools/AI/LogicSystems/Inference";
 import Tools from "./components/Tools/Tools";
 
-import FuzzySolver from "./components/Tools/AI/FuzzyLogic/FuzzySolver";
-import FuzzySolverAlternate from "./components/Tools/AI/FuzzyLogic/FuzzySolverAlternate";
-
-import Perceptron from "./components/Tools/AI/NeuralNetworks/Perceptron";
-import PerceptronAdvanced from "./components/Tools/AI/NeuralNetworks/PerceptronAdvanced";
-
-import EpochSolver from "./components/Tools/AI/NeuralNetworks/EpochSolver";
-
-// =
-import Bidirectional from "./components/Tools/AI/NeuralNetworks/Bidirectional";
-import Genetics from "./components/Tools/AI/GeneticAlgorithms/Genetics";
-import GeneticsCustom from "./components/Tools/AI/GeneticAlgorithms/GeneticsCustom";
-import Hopfield from "./components/Tools/AI/NeuralNetworks/Hopfield";
-
-import GeneralAI from "./components/Tools/AI/GeneralAI";
-import Inference from "./components/Tools/AI/LogicSystems/Inference";
-import Tools from "./components/Tools/Tools";
+// -
+import KnowledgeHub from "./components/Knowledge/KnowledgeHub";
+import DocumentationList from "./components/Knowledge/Lists/DocumentationList";
+import TutorialList from "./components/Knowledge/Lists/TutorialList";
+import ReferenceList from "./components/Knowledge/Lists/ReferenceList";
+import ShowcaseList from "./components/Knowledge/Lists/ShowcaseList";
+import UnrealEngine from "./components/Knowledge/Documentation/UnrealEngine";
+import GameDevBasics from "./components/Knowledge/Tutorials/GameDevBasics";
+import CppPatterns from "./components/Knowledge/Reference/CppPatterns";
+import AnimationPrinciples from "./components/Knowledge/Showcases/AnimationPrinciples";
+import UnrealEngineFundamentals from "./components/Knowledge/Documentation/UnrealEngineFundamentals.js";
 
 
 function App() {
@@ -86,7 +80,6 @@ function App() {
           
           <Route path="/tools" element={<Tools />} />
           <Route path="/tools/ai" element={<GeneralAI />} />
-          {/* <Route path="/articles" element={<ArticleList />} /> */}
 
           <Route path="/tools/ai/neural/bidirectional" element={<Bidirectional />} />
           <Route path="/tools/ai/neural/hopfield" element={<Hopfield />} />
@@ -101,22 +94,21 @@ function App() {
           
           <Route path="/tools" element={<Tools />} />
           <Route path="/tools/ai" element={<GeneralAI />} />
-          {/* <Route path="/articles" element={<ArticleList />} /> */}
 
-          
+          <Route path="/knowledge" element={<KnowledgeHub />} />
+          <Route path="/knowledge/docs" element={<DocumentationList />} />
+          <Route path="/knowledge/tutorials" element={<TutorialList />} />
+          <Route path="/knowledge/reference" element={<ReferenceList />} />
+          <Route path="/knowledge/showcases" element={<ShowcaseList />} />
 
-          {/* <Route path="/inference" element={<Inference />} />
-          <Route path="/fuzzy" element={<FuzzySolver />} />
-          <Route path="/fuzzy-alt" element={<FuzzySolverAlt />} />
-          <Route path="/perceptron" element={<PerceptronSolver />} />
-          <Route path="/perceptron-adv" element={<PerceptronSolverAdv />} />
-          <Route path="/epoch" element={<EpochSolver />} />
+          {/* Example pages */}
+          <Route path="/knowledge/docs/unreal-engine" element={<UnrealEngine />} />
+          <Route path="/knowledge/tutorials/game-dev-basics" element={<GameDevBasics />} />
+          <Route path="/knowledge/reference/cpp-patterns" element={<CppPatterns />} />
+          <Route path="/knowledge/showcases/animation-principles" element={<AnimationPrinciples />} />
 
-          
-          <Route path="/bidirectional" element={<Bidirectional />} />
-          <Route path="/genetics" element={<Genetics />} />
-          <Route path="/genetics-custom" element={<GeneticsCustom />} />
-          <Route path="/hopfield" element={<Hopfield />} /> */}
+          <Route path="/knowledge/docs/unreal-engine-fundamentals" element={<UnrealEngineFundamentals />} />
+
 
           <Route path="*" element={<Navigate to="/"/>} />
         </Routes>
