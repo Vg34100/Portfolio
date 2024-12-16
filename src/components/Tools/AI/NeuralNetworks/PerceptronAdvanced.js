@@ -14,7 +14,7 @@ function PerceptronAdvanced() {
               <Col md={10}>
                 <div style={{ height: "80vh", width: "100%", position: "relative", zIndex: 1 }}>
                   <iframe
-                    src="/perceptron_solver_advanced.html"
+                    src="/tools/ai/perceptron_solver_advanced.html"
                     style={{
                       width: "100%",
                       height: "100%",

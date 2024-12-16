@@ -14,7 +14,7 @@ function EpochSolver() {
               <Col md={10}>
                 <div style={{ height: "80vh", width: "100%", position: "relative", zIndex: 1 }}>
                   <iframe
-                    src="/epoch_solver.html"
+                    src="/tools/ai/epoch_solver.html"
                     style={{
                       width: "100%",
                       height: "100%",

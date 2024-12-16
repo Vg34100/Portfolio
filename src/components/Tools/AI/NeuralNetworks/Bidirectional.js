@@ -14,7 +14,7 @@ function Bidirectional() {
               <Col md={10}>
                 <div style={{ height: "80vh", width: "100%", position: "relative", zIndex: 1 }}>
                   <iframe
-                    src="/bidirectional.html"
+                    src="/tools/ai/bidirectional.html"
                     style={{
                       width: "100%",
                       height: "100%",
