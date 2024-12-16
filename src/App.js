@@ -29,6 +29,12 @@ import PerceptronSolverAdv from "./components/Projects/ProjectPages/PerceptronSo
 
 import EpochSolver from "./components/Projects/ProjectPages/EpochSolver";
 
+// =
+import Bidirectional from "./components/Projects/ProjectPages/Bidirectional";
+import Genetics from "./components/Projects/ProjectPages/Genetics";
+import GeneticsCustom from "./components/Projects/ProjectPages/GeneticsCustom";
+import Hopfield from "./components/Projects/ProjectPages/Hopfield";
+
 
 function App() {
   const [load, upadateLoad] = useState(true);
@@ -64,6 +70,11 @@ function App() {
           <Route path="/perceptron-adv" element={<PerceptronSolverAdv />} />
           <Route path="/epoch" element={<EpochSolver />} />
 
+          {/*  */}
+          <Route path="/bidirectional" element={<Bidirectional />} />
+          <Route path="/genetics" element={<Genetics />} />
+          <Route path="/genetics-custom" element={<GeneticsCustom />} />
+          <Route path="/hopfield" element={<Hopfield />} />
 
           <Route path="*" element={<Navigate to="/"/>} />
         </Routes>
