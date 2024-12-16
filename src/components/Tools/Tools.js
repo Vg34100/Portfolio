@@ -47,7 +47,7 @@ function Tools() {
       <Particle />
       <Container>
         <DropIn>
-          <h1 className="text-center mb-5">
+          <h1 className="text-center mb-5 text-white">
             Interactive <strong className="purple">Tools</strong>
           </h1>
           

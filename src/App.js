@@ -65,21 +65,21 @@ function App() {
 
           <Route path="/arcadia" element={<Arcadia />} />
           <Route path="/deep" element={<DEEP />} />
-
+          
           <Route path="/tools" element={<Tools />} />
-          <Route path="/ai" element={<GeneralAI />} />
+          <Route path="/tools/ai" element={<GeneralAI />} />
           {/* <Route path="/articles" element={<ArticleList />} /> */}
 
-          <Route path="/ai/neural/bidirectional" element={<Bidirectional />} />
-          <Route path="/ai/neural/hopfield" element={<Hopfield />} />
-          <Route path="/ai/neural/perceptron" element={<Perceptron />} />
-          <Route path="/ai/neural/perceptron-advanced" element={<PerceptronAdvanced />} />
-          <Route path="/ai/neural/epoch" element={<EpochSolver />} />
-          <Route path="/ai/genetic/basic" element={<Genetics />} />
-          <Route path="/ai/genetic/custom" element={<GeneticsCustom />} />
-          <Route path="/ai/fuzzy/basic" element={<FuzzySolver />} />
-          <Route path="/ai/fuzzy/alternate" element={<FuzzySolverAlternate />} />
-          <Route path="/ai/logic/inference" element={<Inference />} />
+          <Route path="/tools/ai/neural/bidirectional" element={<Bidirectional />} />
+          <Route path="/tools/ai/neural/hopfield" element={<Hopfield />} />
+          <Route path="/tools/ai/neural/perceptron" element={<Perceptron />} />
+          <Route path="/tools/ai/neural/perceptron-advanced" element={<PerceptronAdvanced />} />
+          <Route path="/tools/ai/neural/epoch" element={<EpochSolver />} />
+          <Route path="/tools/ai/genetic/basic" element={<Genetics />} />
+          <Route path="/tools/ai/genetic/custom" element={<GeneticsCustom />} />
+          <Route path="/tools/ai/fuzzy/basic" element={<FuzzySolver />} />
+          <Route path="/tools/ai/fuzzy/alternate" element={<FuzzySolverAlternate />} />
+          <Route path="/tools/ai/logic/inference" element={<Inference />} />
 
           {/* <Route path="/inference" element={<Inference />} />
           <Route path="/fuzzy" element={<FuzzySolver />} />

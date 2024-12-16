@@ -13,31 +13,31 @@ function GeneralAI() {
     "Neural Networks": {
       icon: <FaNetworkWired />,
       items: [
-        { name: "Bidirectional Network", path: "/ai/neural/bidirectional", description: "Explore bidirectional neural networks" },
-        { name: "Hopfield Network", path: "/ai/neural/hopfield", description: "Work with Hopfield networks" },
-        { name: "Perceptron", path: "/ai/neural/perceptron", description: "Basic perceptron implementation" },
-        { name: "Advanced Perceptron", path: "/ai/neural/perceptron-advanced", description: "Advanced perceptron features" },
-        { name: "Epoch Solver", path: "/ai/neural/epoch", description: "Solve epoch-based problems" }
+        { name: "Bidirectional Network", path: "/tools/ai/neural/bidirectional", description: "Explore bidirectional neural networks" },
+        { name: "Hopfield Network", path: "/tools/ai/neural/hopfield", description: "Work with Hopfield networks" },
+        { name: "Perceptron", path: "/tools/ai/neural/perceptron", description: "Basic perceptron implementation" },
+        { name: "Advanced Perceptron", path: "/tools/ai/neural/perceptron-advanced", description: "Advanced perceptron features" },
+        { name: "Epoch Solver", path: "/tools/ai/neural/epoch", description: "Solve epoch-based problems" }
       ]
     },
     "Genetic Algorithms": {
       icon: <FaDna />,
       items: [
-        { name: "Basic Genetics", path: "/ai/genetic/basic", description: "Basic genetic algorithm implementation" },
-        { name: "Custom Genetics", path: "/ai/genetic/custom", description: "Customizable genetic algorithms" }
+        { name: "Basic Genetics", path: "/tools/ai/genetic/basic", description: "Basic genetic algorithm implementation" },
+        { name: "Custom Genetics", path: "/tools/ai/genetic/custom", description: "Customizable genetic algorithms" }
       ]
     },
     "Fuzzy Logic": {
       icon: <BsCodeSquare />,
       items: [
-        { name: "Fuzzy Solver", path: "/ai/fuzzy/basic", description: "Basic fuzzy logic solver" },
-        { name: "Alternative Fuzzy Solver", path: "/ai/fuzzy/alternate", description: "Alternative approach to fuzzy logic" }
+        { name: "Fuzzy Solver", path: "/tools/ai/fuzzy/basic", description: "Basic fuzzy logic solver" },
+        { name: "Alternative Fuzzy Solver", path: "/tools/ai/fuzzy/alternate", description: "Alternative approach to fuzzy logic" }
       ]
     },
     "Logic Systems": {
       icon: <FaLightbulb />,
       items: [
-        { name: "Inference Engine", path: "/ai/logic/inference", description: "Logic inference system" }
+        { name: "Inference Engine", path: "/tools/ai/logic/inference", description: "Logic inference system" }
       ]
     }
   };
