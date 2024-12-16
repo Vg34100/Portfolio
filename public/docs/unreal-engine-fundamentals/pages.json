@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Basics",
+    "path": "module-1\\basics.md"
+  },
+  {
+    "title": "Introduction",
+    "path": "module-1\\introduction.md"
+  },
+  {
+    "title": "Advanced",
+    "path": "module-2\\advanced.md"
+  }
+]

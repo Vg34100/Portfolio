@@ -1,0 +1,55 @@
+{
+  "type": "directory",
+  "name": "unreal-engine-fundamentals",
+  "path": "unreal-engine-fundamentals",
+  "children": [
+    {
+      "type": "directory",
+      "name": "01-module-fun",
+      "path": "01-module-fun",
+      "children": [
+        {
+          "type": "directory",
+          "name": "01-first-steps",
+          "path": "01-module-fun\\01-first-steps",
+          "children": [
+            {
+              "type": "file",
+              "name": "01-introduction.md",
+              "path": "01-module-fun\\01-first-steps\\01-introduction.md"
+            },
+            {
+              "type": "file",
+              "name": "02-basics.md",
+              "path": "01-module-fun\\01-first-steps\\02-basics.md"
+            }
+          ]
+        },
+        {
+          "type": "directory",
+          "name": "01-materials",
+          "path": "01-module-fun\\01-materials",
+          "children": [
+            {
+              "type": "file",
+              "name": "01-introduction.md",
+              "path": "01-module-fun\\01-materials\\01-introduction.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "directory",
+      "name": "02-module-2",
+      "path": "02-module-2",
+      "children": [
+        {
+          "type": "file",
+          "name": "advanced.md",
+          "path": "02-module-2\\advanced.md"
+        }
+      ]
+    }
+  ]
+}
