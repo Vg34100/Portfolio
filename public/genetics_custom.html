@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Genetic Algorithm Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .guide {
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .info-text {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .initial-population-input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .offspring-controls {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .operation-type {
+            margin-bottom: 15px;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .add-operation {
+            background-color: #2196F3;
+        }
+        .error {
+            color: red;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid red;
+            border-radius: 4px;
+            background-color: #fee;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enhanced Genetic Algorithm Calculator</h1>
+
+    <div class="container">
+        <h2>Quick Guide</h2>
+        <div class="guide">
+            <h3>How to use:</h3>
+            <ol>
+                <li>Choose your fitness function and number of bits</li>
+                <li>Enter initial population manually or generate randomly</li>
+                <li>Add operations (crossover/mutation) to create offspring</li>
+                <li>Generate offspring and view results</li>
+            </ol>
+            <p><strong>Note:</strong> For crossover/mutation positions, counting from right means position 1 is the rightmost bit.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Step 1: Problem Setup</h2>
+        <div class="input-group">
+            <label>Fitness Function:</label>
+            <select id="functionSelect">
+                <option value="quadratic">Quadratic Function (-x³ + 15x²)</option>
+                <option value="new">Final Function (x³ - x² - x + 1)</option>
+                <option value="simple">Simple Function (x²)</option>
+                <option value="custom">Custom Function</option>
+            </select>
+            <div id="customFunction" style="display:none;">
+                <input type="text" id="customFunctionInput" placeholder="Enter function (use 'x' as variable)">
+            </div>
+        </div>
+        <div class="input-group">
+            <label>Number of Bits:</label>
+            <input type="number" id="bitLength" value="4" min="2" max="16">
+            <p class="info-text">This determines the range of possible values (2^bits)</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Step 2: Initial Population</h2>
+        <div class="input-group">
+            <label>Population Type:</label>
+            <select id="populationType">
+                <option value="manual">Manual Entry</option>
+                <option value="random">Random Generation</option>
+            </select>
+            
+            <div id="manualPopulation">
+                <p class="info-text">Enter comma-separated decimal numbers (e.g., 2,4,7,8,9,11)</p>
+                <input type="text" id="manualPopulationInput" class="initial-population-input">
+            </div>
+            
+            <div id="randomPopulation" style="display:none;">
+                <label>Population Size:</label>
+                <input type="number" id="populationSize" value="6" min="2" max="20">
+            </div>
+        </div>
+        <button onclick="initializePopulation()">Initialize Population</button>
+    </div>
+
+    <div class="container">
+        <h2>Step 3: Fitness Results</h2>
+        <div id="fitnessResults" class="results"></div>
+    </div>
+
+    <div class="container">
+        <h2>Step 4: Generate Offspring</h2>
+        <div id="offspringOperations"></div>
+        <button class="add-operation" onclick="addOffspringOperation()">Add Operation</button>
+        <button onclick="generateOffspring()">Generate All Offspring</button>
+        <div id="offspringResults" class="results"></div>
+    </div>
+
+    <template id="operationTemplate">
+        <div class="offspring-controls">
+            <div class="operation-type">
+                <label>Operation Type:</label>
+                <select class="operation-select" onchange="updateOperationControls(this)">
+                    <option value="crossover">Crossover</option>
+                    <option value="mutation">Mutation</option>
+                </select>
+            </div>
+            
+            <div class="crossover-controls">
+                <div class="input-group">
+                    <label>First Parent:</label>
+                    <select class="first-parent">
+                        <option value="highest">Highest Fitness</option>
+                        <option value="second">Second Highest</option>
+                        <option value="third">Third Highest</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Second Parent:</label>
+                    <select class="second-parent">
+                        <option value="second">Second Highest</option>
+                        <option value="highest">Highest Fitness</option>
+                        <option value="third">Third Highest</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Crossover Point:</label>
+                    <input type="number" class="crossover-point" value="1" min="1">
+                    <label>
+                        <input type="checkbox" class="from-right" checked>
+                        Count from right
+                    </label>
+                    <p class="info-text">Position where binary strings will be split and swapped</p>
+                </div>
+            </div>
+            
+            <div class="mutation-controls" style="display:none;">
+                <div class="input-group">
+                    <label>Choose Chromosome:</label>
+                    <select class="mutation-parent">
+                        <option value="highest">Highest Fitness</option>
+                        <option value="second">Second Highest</option>
+                        <option value="third">Third Highest</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Mutation Position:</label>
+                    <input type="number" class="mutation-position" value="1" min="1">
+                    <label>
+                        <input type="checkbox" class="from-right" checked>
+                        Count from right
+                    </label>
+                    <p class="info-text">Position where bit will be flipped (0→1 or 1→0)</p>
+                </div>
+            </div>
+            
+            <button onclick="removeOperation(this)">Remove Operation</button>
+        </div>
+    </template>
+
+    <script>
+        let population = [];
+        
+        function dec2bin(dec, length) {
+            return (dec >>> 0).toString(2).padStart(length, '0');
+        }
+
+        function bin2dec(bin) {
+            return parseInt(bin, 2);
+        }
+
+        function evaluateFitness(x) {
+            const functionType = document.getElementById('functionSelect').value;
+            switch(functionType) {
+                case 'quadratic':
+                    return -Math.pow(x, 3) + 15 * Math.pow(x, 2);
+                case 'new':
+                    return Math.pow(x, 3) - Math.pow(x, 2) - x + 1;
+                case 'simple':
+                    return Math.pow(x, 2);
+                case 'custom':
+                    try {
+                        const customFunc = document.getElementById('customFunctionInput').value;
+                        return Function('x', `return ${customFunc}`)(x);
+                    } catch (e) {
+                        alert('Invalid custom function');
+                        return 0;
+                    }
+            }
+        }
+
+        function validatePopulation(numbers, bits) {
+            const maxValue = Math.pow(2, bits) - 1;
+            const invalid = numbers.filter(n => n < 0 || n > maxValue);
+            if (invalid.length > 0) {
+                alert(`Invalid values for ${bits} bits: ${invalid.join(', ')}. Max value allowed: ${maxValue}`);
+                return false;
+            }
+            return true;
+        }
+
+        function initializePopulation() {
+            const bits = parseInt(document.getElementById('bitLength').value);
+            const populationType = document.getElementById('populationType').value;
+            
+            if (populationType === 'manual') {
+                const input = document.getElementById('manualPopulationInput').value;
+                const numbers = input.split(',').map(n => parseInt(n.trim())).filter(n => !isNaN(n));
+                
+                if (!validatePopulation(numbers, bits)) {
+                    return;
+                }
+                
+                population = numbers.map(n => ({
+                    decimal: n,
+                    binary: dec2bin(n, bits),
+                    fitness: 0,
+                    survivalChance: 0
+                }));
+            } else {
+                const size = parseInt(document.getElementById('populationSize').value);
+                const maxValue = Math.pow(2, bits) - 1;
+                population = [];
+                for(let i = 0; i < size; i++) {
+                    const value = Math.floor(Math.random() * (maxValue + 1));
+                    population.push({
+                        decimal: value,
+                        binary: dec2bin(value, bits),
+                        fitness: 0,
+                        survivalChance: 0
+                    });
+                }
+            }
+            
+            calculateFitness();
+        }
+
+        function calculateFitness() {
+            let totalFitness = 0;
+            
+            population.forEach(p => {
+                p.fitness = evaluateFitness(p.decimal);
+                totalFitness += p.fitness;
+            });
+
+            population.forEach(p => {
+                p.survivalChance = p.fitness / totalFitness;
+            });
+
+            displayFitnessResults();
+        }
+
+        function displayFitnessResults() {
+            const container = document.getElementById('fitnessResults');
+            container.innerHTML = '<h3>Population Fitness:</h3>';
+            
+            const table = document.createElement('table');
+            table.innerHTML = `
+                <tr>
+                    <th>Decimal</th>
+                    <th>Binary</th>
+                    <th>Fitness</th>
+                    <th>Survival Chance</th>
+                </tr>
+                ${population.map((p, i) => `
+                    <tr>
+                        <td>${p.decimal}</td>
+                        <td>${p.binary}</td>
+                        <td>${p.fitness.toFixed(2)}</td>
+                        <td>${(p.survivalChance * 100).toFixed(2)}%</td>
+                    </tr>
+                `).join('')}
+            `;
+            container.appendChild(table);
+        }
+
+        function addOffspringOperation() {
+            const template = document.getElementById('operationTemplate');
+            const clone = template.content.cloneNode(true);
+            const container = document.getElementById('offspringOperations');
+            container.appendChild(clone);
+            
+            // Move these lines after appending to the document
+            const operationDiv = container.lastElementChild;
+            if (operationDiv) {
+                const bitLength = parseInt(document.getElementById('bitLength').value);
+                const crossoverPoint = operationDiv.querySelector('.crossover-point');
+                const mutationPosition = operationDiv.querySelector('.mutation-position');
+                if (crossoverPoint) crossoverPoint.max = bitLength;
+                if (mutationPosition) mutationPosition.max = bitLength;
+            }
+        }
+
+        function updateOperationControls(select) {
+            const controls = select.closest('.offspring-controls');
+            const crossoverControls = controls.querySelector('.crossover-controls');
+            const mutationControls = controls.querySelector('.mutation-controls');
+            
+            if (select.value === 'crossover') {
+                crossoverControls.style.display = 'block';
+                mutationControls.style.display = 'none';
+            } else {
+                crossoverControls.style.display = 'none';
+                mutationControls.style.display = 'block';
+            }
+        }
+
+        function removeOperation(button) {
+            button.closest('.offspring-controls').remove();
+        }
+
+        function crossover(parent1, parent2, point, fromRight) {
+            const length = parent1.length;
+            const actualPoint = fromRight ? length - point : point;
+            
+            const child1 = parent1.slice(0, actualPoint) + parent2.slice(actualPoint);
+            const child2 = parent2.slice(0, actualPoint) + parent1.slice(actualPoint);
+            
+            return [child1, child2];
+        }
+
+        function mutate(binary, position, fromRight) {
+            const arr = binary.split('');
+            const actualPosition = fromRight ? arr.length - position : position - 1;
+            arr[actualPosition] = arr[actualPosition] === '0' ? '1' : '0';
+            return arr.join('');
+        }
+
+        function getParentByRank(rank) {
+            const sorted = [...population].sort((a, b) => b.fitness - a.fitness);
+            switch(rank) {
+                case 'highest': return sorted[0];
+                case 'second': return sorted[1];
+                case 'third': return sorted[2];
+                default: return sorted[0];
+            }
+        }
+
+        function generateOffspring() {
+            if (population.length === 0) {
+                alert('Please initialize population first');
+                return;
+            }
+            
+            const operations = document.querySelectorAll('.offspring-controls');
+            const offspring = [];
+            
+            operations.forEach(op => {
+                const type = op.querySelector('.operation-select').value;
+                
+                if (type === 'crossover') {
+                    const parent1 = getParentByRank(op.querySelector('.first-parent').value);
+                    const parent2 = getParentByRank(op.querySelector('.second-parent').value);
+                    const point = parseInt(op.querySelector('.crossover-point').value);
+                    const fromRight = op.querySelector('.crossover-controls .from-right').checked;
+                    
+                    const [child1, child2] = crossover(parent1.binary, parent2.binary, point, fromRight);
+                    offspring.push(
+                        { 
+                            type: 'Crossover',
+                            binary: child1,
+                            decimal: bin2dec(child1),
+                            details: `Parents: ${parent1.decimal}(${parent1.binary}) & ${parent2.decimal}(${parent2.binary}), Point: ${point}`
+                        },
+                        {
+                            type: 'Crossover',
+                            binary: child2,
+                            decimal: bin2dec(child2),
+                            details: `Parents: ${parent1.decimal}(${parent1.binary}) & ${parent2.decimal}(${parent2.binary}), Point: ${point}`
+                        }
+                    );
+                } else {
+                    const parent = getParentByRank(op.querySelector('.mutation-parent').value);
+                    const position = parseInt(op.querySelector('.mutation-position').value);
+                    const fromRight = op.querySelector('.mutation-controls .from-right').checked;
+                    
+                    const mutated = mutate(parent.binary, position, fromRight);
+                    offspring.push({
+                        type: 'Mutation',
+                        binary: mutated,
+                        decimal: bin2dec(mutated),
+                        details: `Parent: ${parent.decimal}(${parent.binary}), Position: ${position}`
+                    });
+                }
+            });
+            
+            displayOffspringResults(offspring);
+        }
+
+        function displayOffspringResults(offspring) {
+            const container = document.getElementById('offspringResults');
+            container.innerHTML = '<h3>Offspring Generation:</h3>';
+            
+            const offspringFitness = offspring.map(o => evaluateFitness(o.decimal));
+            const offspringAvg = offspringFitness.reduce((sum, f) => sum + f, 0) / offspring.length;
+            const offspringMax = Math.max(...offspringFitness);
+            
+            const parentAvg = population.reduce((sum, p) => sum + p.fitness, 0) / population.length;
+            const parentMax = Math.max(...population.map(p => p.fitness));
+            
+            const table = document.createElement('table');
+            table.innerHTML = `
+                <tr>
+                    <th>Type</th>
+                    <th>Decimal</th>
+                    <th>Binary</th>
+                    <th>Fitness</th>
+                    <th>Details</th>
+                </tr>
+                ${offspring.map(o => `
+                    <tr>
+                        <td>${o.type}</td>
+                        <td>${o.decimal}</td>
+                        <td>${o.binary}</td>
+                        <td>${evaluateFitness(o.decimal).toFixed(2)}</td>
+                        <td>${o.details || ''}</td>
+                    </tr>
+                `).join('')}
+            `;
+            container.appendChild(table);
+            
+            const comparison = document.createElement('div');
+            comparison.innerHTML = `
+                <h3>Generation Comparison:</h3>
+                <div class="step">
+                    <p>Parent Generation: 
+                       Average Fitness = ${parentAvg.toFixed(2)}, 
+                       Maximum Fitness = ${parentMax.toFixed(2)}</p>
+                    <p>Offspring Generation: 
+                       Average Fitness = ${offspringAvg.toFixed(2)}, 
+                       Maximum Fitness = ${offspringMax.toFixed(2)}</p>
+                    <p>Changes: 
+                       Average Change = ${(offspringAvg - parentAvg).toFixed(2)}, 
+                       Maximum Change = ${(offspringMax - parentMax).toFixed(2)}</p>
+                </div>
+            `;
+            container.appendChild(comparison);
+        }
+
+        // Event Listeners
+        document.getElementById('populationType').addEventListener('change', function() {
+            const manualDiv = document.getElementById('manualPopulation');
+            const randomDiv = document.getElementById('randomPopulation');
+            manualDiv.style.display = this.value === 'manual' ? 'block' : 'none';
+            randomDiv.style.display = this.value === 'random' ? 'block' : 'none';
+        });
+
+        document.getElementById('functionSelect').addEventListener('change', function() {
+            const customFunction = document.getElementById('customFunction');
+            customFunction.style.display = this.value === 'custom' ? 'block' : 'none';
+        });
+
+        document.getElementById('bitLength').addEventListener('change', function() {
+            const value = parseInt(this.value);
+            const operations = document.querySelectorAll('.offspring-controls');
+            operations.forEach(op => {
+                op.querySelector('.crossover-point').max = value;
+                op.querySelector('.mutation-position').max = value;
+            });
+        });
+
+        // Initialize
+        window.onload = function() {
+            const bitLength = parseInt(document.getElementById('bitLength').value);
+            addOffspringOperation(); // Add first operation by default
+        };
+    </script>
+</body>
+</html>

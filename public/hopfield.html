@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hopfield Network Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .guide {
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .matrix {
+            display: inline-block;
+            margin: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .matrix input {
+            width: 40px;
+            margin: 2px;
+            text-align: center;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .step {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #fff;
+            border-left: 3px solid #4CAF50;
+        }
+        #toggleGuide {
+            background-color: #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hopfield Network Calculator</h1>
+    
+    <button id="toggleGuide">Toggle Quick Guide</button>
+    
+    <div class="guide" id="guideSection" style="display:none;">
+        <h2>Quick Guide: Hopfield Networks</h2>
+        <p><strong>Purpose:</strong> Hopfield Networks are used for pattern recognition and memory storage.</p>
+        <h3>Steps to Solve:</h3>
+        <ol>
+            <li>Store patterns by creating weight matrix
+                <ul>
+                    <li>Multiply each pattern by its transpose</li>
+                    <li>Sum all resulting matrices</li>
+                    <li>Set diagonal to zero</li>
+                </ul>
+            </li>
+            <li>Test patterns
+                <ul>
+                    <li>Multiply weight matrix by pattern</li>
+                    <li>Apply sign function</li>
+                    <li>Check if result matches original</li>
+                </ul>
+            </li>
+            <li>Probe network
+                <ul>
+                    <li>Input probe pattern</li>
+                    <li>Iterate until stable</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="container">
+        <h2>Step 1: Input Patterns</h2>
+        <div id="patternInputs">
+            <div class="matrix">
+                <h3>Pattern 1</h3>
+                <div id="pattern1"></div>
+            </div>
+        </div>
+        <button onclick="addPattern()">Add Pattern</button>
+        <button onclick="calculateWeightMatrix()">Calculate Weight Matrix</button>
+    </div>
+
+    <div class="container">
+        <h2>Step 2: Weight Matrix</h2>
+        <div id="weightMatrix" class="matrix"></div>
+    </div>
+
+    <div class="container">
+        <h2>Step 3: Test Patterns</h2>
+        <div id="testResults" class="results"></div>
+        <button onclick="testPatterns()">Test All Patterns</button>
+    </div>
+
+    <div class="container">
+        <h2>Step 4: Probe Network</h2>
+        <div class="matrix">
+            <h3>Probe Pattern</h3>
+            <div id="probePattern"></div>
+        </div>
+        <button onclick="probeNetwork()">Probe Network</button>
+        <div id="probeResults" class="results"></div>
+    </div>
+
+    <script>
+        let patternCount = 1;
+        let size = 5; // Default size for 5x5 network
+
+        function createMatrixInputs(containerId, size) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            for (let i = 0; i < size; i++) {
+                const input = document.createElement('input');
+                input.type = 'number';
+                input.value = '1';
+                input.min = '-1';
+                input.max = '1';
+                container.appendChild(input);
+            }
+        }
+
+        function addPattern() {
+            patternCount++;
+            const div = document.createElement('div');
+            div.className = 'matrix';
+            div.innerHTML = `<h3>Pattern ${patternCount}</h3><div id="pattern${patternCount}"></div>`;
+            document.getElementById('patternInputs').appendChild(div);
+            createMatrixInputs(`pattern${patternCount}`, size);
+        }
+
+        function getPatternValues(patternId) {
+            const inputs = document.querySelectorAll(`#${patternId} input`);
+            return Array.from(inputs).map(input => parseInt(input.value));
+        }
+
+        function calculateWeightMatrix() {
+            const weightMatrix = Array(size).fill().map(() => Array(size).fill(0));
+            
+            // Calculate weight matrix
+            for (let p = 1; p <= patternCount; p++) {
+                const pattern = getPatternValues(`pattern${p}`);
+                
+                for (let i = 0; i < size; i++) {
+                    for (let j = 0; j < size; j++) {
+                        if (i !== j) {
+                            weightMatrix[i][j] += pattern[i] * pattern[j];
+                        }
+                    }
+                }
+            }
+
+            // Display weight matrix
+            const container = document.getElementById('weightMatrix');
+            container.innerHTML = '';
+            for (let i = 0; i < size; i++) {
+                for (let j = 0; j < size; j++) {
+                    const input = document.createElement('input');
+                    input.type = 'number';
+                    input.value = weightMatrix[i][j];
+                    input.readOnly = true;
+                    container.appendChild(input);
+                }
+                container.appendChild(document.createElement('br'));
+            }
+
+            return weightMatrix;
+        }
+
+        function sign(x) {
+            return x > 0 ? 1 : x < 0 ? -1 : 0;
+        }
+
+        function multiplyWeightMatrix(weightMatrix, pattern) {
+            return weightMatrix.map((row, i) => 
+                sign(row.reduce((sum, weight, j) => sum + weight * pattern[j], 0))
+            );
+        }
+
+        function arraysEqual(arr1, arr2) {
+            return arr1.every((val, idx) => val === arr2[idx]);
+        }
+
+        function testPatterns() {
+            const weightMatrix = calculateWeightMatrix();
+            const results = document.getElementById('testResults');
+            results.innerHTML = '';
+
+            for (let p = 1; p <= patternCount; p++) {
+                const pattern = getPatternValues(`pattern${p}`);
+                const result = multiplyWeightMatrix(weightMatrix, pattern);
+                const isStable = arraysEqual(pattern, result);
+
+                const div = document.createElement('div');
+                div.className = 'step';
+                div.innerHTML = `
+                    <h4>Pattern ${p} Test:</h4>
+                    <p>Original: [${pattern.join(', ')}]</p>
+                    <p>Result: [${result.join(', ')}]</p>
+                    <p>Status: ${isStable ? 'STABLE ✓' : 'NOT STABLE ✗'}</p>
+                `;
+                results.appendChild(div);
+            }
+        }
+
+        function probeNetwork() {
+            const weightMatrix = calculateWeightMatrix();
+            const probePattern = getPatternValues('probePattern');
+            const results = document.getElementById('probeResults');
+            results.innerHTML = '';
+
+            let currentPattern = probePattern;
+            let iterations = 0;
+            const maxIterations = 10;
+            let hasConverged = false;
+
+            while (iterations < maxIterations && !hasConverged) {
+                iterations++;
+                const newPattern = multiplyWeightMatrix(weightMatrix, currentPattern);
+                
+                const div = document.createElement('div');
+                div.className = 'step';
+                div.innerHTML = `
+                    <h4>Iteration ${iterations}:</h4>
+                    <p>Pattern: [${newPattern.join(', ')}]</p>
+                `;
+                results.appendChild(div);
+
+                hasConverged = arraysEqual(currentPattern, newPattern);
+                currentPattern = newPattern;
+            }
+
+            const summary = document.createElement('div');
+            summary.innerHTML = `
+                <h4>Probe Summary:</h4>
+                <p>${hasConverged ? 'Network converged!' : 'Maximum iterations reached'}</p>
+                <p>Final pattern: [${currentPattern.join(', ')}]</p>
+            `;
+            results.appendChild(summary);
+        }
+
+        // Initialize the page
+        createMatrixInputs('pattern1', size);
+        createMatrixInputs('probePattern', size);
+
+        // Toggle guide
+        document.getElementById('toggleGuide').onclick = function() {
+            const guide = document.getElementById('guideSection');
+            guide.style.display = guide.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
