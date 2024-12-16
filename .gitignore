@@ -29,3 +29,5 @@ Server/node_modules
 Server/config.js
 *.pem
 debug.log
+
+/docs/history/*
