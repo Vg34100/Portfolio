@@ -1,5 +1,5 @@
 // components/Knowledge/Showcases/AnimationPrinciples.js
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import Particle from "../../Particle";
 import DropIn from "../../DropIn";
@@ -7,7 +7,7 @@ import DropIn from "../../DropIn";
 function AnimationPrinciples() {
   const [activeSection, setActiveSection] = useState(null);
 
-  const principles = [
+  const principles = useMemo(() => [
     {
       id: "squash-stretch",
       title: "Squash and Stretch",
@@ -62,7 +62,7 @@ void StagingCamera::FocusOnAction(AActor* target) {
   ));
 }`
     }
-  ];
+  ], []);
 
   useEffect(() => {
     const observerOptions = {
@@ -85,7 +85,7 @@ void StagingCamera::FocusOnAction(AActor* target) {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [principles]);
 
   return (
     <Container fluid className="knowledge-section text-white">
