@@ -38,6 +38,24 @@ import GeneralAI from "./components/Tools/AI/GeneralAI";
 import Inference from "./components/Tools/AI/LogicSystems/Inference";
 import Tools from "./components/Tools/Tools";
 
+import FuzzySolver from "./components/Tools/AI/FuzzyLogic/FuzzySolver";
+import FuzzySolverAlternate from "./components/Tools/AI/FuzzyLogic/FuzzySolverAlternate";
+
+import Perceptron from "./components/Tools/AI/NeuralNetworks/Perceptron";
+import PerceptronAdvanced from "./components/Tools/AI/NeuralNetworks/PerceptronAdvanced";
+
+import EpochSolver from "./components/Tools/AI/NeuralNetworks/EpochSolver";
+
+// =
+import Bidirectional from "./components/Tools/AI/NeuralNetworks/Bidirectional";
+import Genetics from "./components/Tools/AI/GeneticAlgorithms/Genetics";
+import GeneticsCustom from "./components/Tools/AI/GeneticAlgorithms/GeneticsCustom";
+import Hopfield from "./components/Tools/AI/NeuralNetworks/Hopfield";
+
+import GeneralAI from "./components/Tools/AI/GeneralAI";
+import Inference from "./components/Tools/AI/LogicSystems/Inference";
+import Tools from "./components/Tools/Tools";
+
 
 function App() {
   const [load, upadateLoad] = useState(true);
@@ -80,6 +98,12 @@ function App() {
           <Route path="/tools/ai/fuzzy/basic" element={<FuzzySolver />} />
           <Route path="/tools/ai/fuzzy/alternate" element={<FuzzySolverAlternate />} />
           <Route path="/tools/ai/logic/inference" element={<Inference />} />
+          
+          <Route path="/tools" element={<Tools />} />
+          <Route path="/tools/ai" element={<GeneralAI />} />
+          {/* <Route path="/articles" element={<ArticleList />} /> */}
+
+          
 
           {/* <Route path="/inference" element={<Inference />} />
           <Route path="/fuzzy" element={<FuzzySolver />} />
