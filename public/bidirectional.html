@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAM Network Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .guide {
+            background-color: #e8f4ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .matrix {
+            display: inline-block;
+            margin: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .pattern-pair {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .matrix input {
+            width: 40px;
+            margin: 2px;
+            text-align: center;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .step {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #fff;
+            border-left: 3px solid #4CAF50;
+        }
+        .math-explanation {
+            background-color: #fff3e0;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        #toggleGuide {
+            background-color: #2196F3;
+        }
+        .arrow {
+            margin: 0 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bidirectional Associative Memory (BAM) Calculator</h1>
+    
+    <button id="toggleGuide">Toggle Quick Guide</button>
+    
+    <div class="guide" id="guideSection" style="display:none;">
+        <h2>Quick Guide: BAM Networks</h2>
+        <p><strong>Purpose:</strong> BAM networks store and recall pairs of patterns, allowing bidirectional association between them.</p>
+        
+        <h3>Key Concepts:</h3>
+        <ul>
+            <li>Stores pattern pairs (X, Y)</li>
+            <li>Can recall in both directions (X→Y and Y→X)</li>
+            <li>Uses matrix multiplication for recall</li>
+            <li>Applies bipolar activation (-1 or 1)</li>
+        </ul>
+
+        <h3>Steps to Solve:</h3>
+        <ol>
+            <li>Store patterns:
+                <ul>
+                    <li>Create weight matrix W = X * Y^T for each pair</li>
+                    <li>Sum all matrices for final weight matrix</li>
+                </ul>
+            </li>
+            <li>Test patterns:
+                <ul>
+                    <li>Forward: Y = sign(W * X)</li>
+                    <li>Backward: X = sign(W^T * Y)</li>
+                </ul>
+            </li>
+            <li>Probe network:
+                <ul>
+                    <li>Can probe from either X or Y direction</li>
+                    <li>Iterate until pattern stabilizes</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="container">
+        <h2>Step 1: Input Pattern Pairs</h2>
+        <div id="patternPairs">
+            <div class="pattern-pair">
+                <div class="matrix">
+                    <h3>X1 Pattern</h3>
+                    <div id="x1"></div>
+                </div>
+                <span class="arrow">↔</span>
+                <div class="matrix">
+                    <h3>Y1 Pattern</h3>
+                    <div id="y1"></div>
+                </div>
+            </div>
+        </div>
+        <button onclick="addPatternPair()">Add Pattern Pair</button>
+        <div>
+            <label>X Size: <input type="number" id="xSize" value="5" min="1" max="10"></label>
+            <label>Y Size: <input type="number" id="ySize" value="3" min="1" max="10"></label>
+            <button onclick="updateSizes()">Update Sizes</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Step 2: Weight Matrix</h2>
+        <button onclick="calculateWeightMatrix()">Calculate Weight Matrix</button>
+        <div id="weightMatrixContainer">
+            <div id="weightMatrix" class="matrix"></div>
+            <div id="weightExplanation" class="math-explanation"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Step 3: Test Patterns</h2>
+        <button onclick="testPatterns()">Test All Patterns</button>
+        <div id="testResults" class="results"></div>
+    </div>
+
+    <div class="container">
+        <h2>Step 4: Probe Network</h2>
+        <div class="pattern-pair">
+            <div class="matrix">
+                <h3>Probe X Pattern</h3>
+                <div id="probeX"></div>
+            </div>
+            <span class="arrow">↔</span>
+            <div class="matrix">
+                <h3>Probe Y Pattern</h3>
+                <div id="probeY"></div>
+            </div>
+        </div>
+        <button onclick="probeNetwork('X')">Probe from X</button>
+        <button onclick="probeNetwork('Y')">Probe from Y</button>
+        <div id="probeResults" class="results"></div>
+    </div>
+
+    <script>
+        let pairCount = 1;
+        let xSize = 5;
+        let ySize = 3;
+
+        function createMatrixInputs(containerId, size) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            for (let i = 0; i < size; i++) {
+                const input = document.createElement('input');
+                input.type = 'number';
+                input.value = '1';
+                input.min = '-1';
+                input.max = '1';
+                container.appendChild(input);
+            }
+        }
+
+        function updateSizes() {
+            xSize = parseInt(document.getElementById('xSize').value);
+            ySize = parseInt(document.getElementById('ySize').value);
+            
+            // Recreate all pattern inputs with new sizes
+            for (let i = 1; i <= pairCount; i++) {
+                createMatrixInputs(`x${i}`, xSize);
+                createMatrixInputs(`y${i}`, ySize);
+            }
+            createMatrixInputs('probeX', xSize);
+            createMatrixInputs('probeY', ySize);
+        }
+
+        function addPatternPair() {
+            pairCount++;
+            const div = document.createElement('div');
+            div.className = 'pattern-pair';
+            div.innerHTML = `
+                <div class="matrix">
+                    <h3>X${pairCount} Pattern</h3>
+                    <div id="x${pairCount}"></div>
+                </div>
+                <span class="arrow">↔</span>
+                <div class="matrix">
+                    <h3>Y${pairCount} Pattern</h3>
+                    <div id="y${pairCount}"></div>
+                </div>
+            `;
+            document.getElementById('patternPairs').appendChild(div);
+            createMatrixInputs(`x${pairCount}`, xSize);
+            createMatrixInputs(`y${pairCount}`, ySize);
+        }
+
+        function getPatternValues(patternId) {
+            const inputs = document.querySelectorAll(`#${patternId} input`);
+            return Array.from(inputs).map(input => parseInt(input.value));
+        }
+
+        function multiplyVectors(x, y) {
+            const matrix = [];
+            for (let i = 0; i < x.length; i++) {
+                matrix[i] = [];
+                for (let j = 0; j < y.length; j++) {
+                    matrix[i][j] = x[i] * y[j];
+                }
+            }
+            return matrix;
+        }
+
+        function addMatrices(m1, m2) {
+            const result = [];
+            for (let i = 0; i < m1.length; i++) {
+                result[i] = [];
+                for (let j = 0; j < m1[0].length; j++) {
+                    result[i][j] = m1[i][j] + m2[i][j];
+                }
+            }
+            return result;
+        }
+
+        function calculateWeightMatrix() {
+            let weightMatrix = Array(xSize).fill().map(() => Array(ySize).fill(0));            
+            let explanation = '<h3>Weight Matrix Calculation:</h3>';
+            
+            // Calculate and sum individual weight matrices
+            for (let p = 1; p <= pairCount; p++) {
+                const x = getPatternValues(`x${p}`);
+                const y = getPatternValues(`y${p}`);
+                
+                explanation += `<p>For pattern pair ${p}:</p>`;
+                explanation += `<p>X${p} = [${x.join(', ')}]</p>`;
+                explanation += `<p>Y${p} = [${y.join(', ')}]</p>`;
+                
+                const pairMatrix = multiplyVectors(x, y);
+                explanation += `<p>W${p} = X${p} * Y${p}^T:</p>`;
+                
+                // Add this pair's contribution
+                for (let i = 0; i < xSize; i++) {
+                    for (let j = 0; j < ySize; j++) {
+                        weightMatrix[i][j] += pairMatrix[i][j];
+                    }
+                }
+            }
+
+            // Display weight matrix
+            const container = document.getElementById('weightMatrix');
+            container.innerHTML = '';
+            for (let i = 0; i < xSize; i++) {
+                for (let j = 0; j < ySize; j++) {
+                    const input = document.createElement('input');
+                    input.type = 'number';
+                    input.value = weightMatrix[i][j];
+                    input.readOnly = true;
+                    container.appendChild(input);
+                }
+                container.appendChild(document.createElement('br'));
+            }
+
+            document.getElementById('weightExplanation').innerHTML = explanation;
+            return weightMatrix;
+        }
+
+        function sign(x) {
+            return x > 0 ? 1 : x < 0 ? -1 : 0;
+        }
+        
+        function multiplyMatrixVector(matrix, vector, transpose = false) {
+            const result = [];
+            if (!transpose) {
+                // Forward: Y = W × X
+                // matrix is xSize × ySize (5×3)
+                // vector is xSize (5)
+                // result should be ySize (3)
+                for (let i = 0; i < ySize; i++) {
+                    let sum = 0;
+                    for (let j = 0; j < xSize; j++) {
+                        sum += matrix[j][i] * vector[j];  // Note the j,i instead of i,j
+                    }
+                    result.push(sign(sum));
+                }
+            } else {
+                // Backward: X = WT × Y
+                // matrix is xSize × ySize (5×3)
+                // vector is ySize (3)
+                // result should be xSize (5)
+                for (let i = 0; i < xSize; i++) {
+                    let sum = 0;
+                    for (let j = 0; j < ySize; j++) {
+                        sum += matrix[i][j] * vector[j];
+                    }
+                    result.push(sign(sum));
+                }
+            }
+            return result;
+        }
+
+        function arraysEqual(arr1, arr2) {
+            return arr1.every((val, idx) => val === arr2[idx]);
+        }
+
+        function testPatterns() {
+            const weightMatrix = calculateWeightMatrix();
+            const results = document.getElementById('testResults');
+            results.innerHTML = '';
+
+            for (let p = 1; p <= pairCount; p++) {
+                const x = getPatternValues(`x${p}`);
+                const y = getPatternValues(`y${p}`);
+
+                // Forward test (X → Y)
+                const forwardResult = multiplyMatrixVector(weightMatrix, x);
+                const forwardStable = arraysEqual(forwardResult, y);
+
+                // Backward test (Y → X)
+                const backwardResult = multiplyMatrixVector(weightMatrix, y, true);
+                const backwardStable = arraysEqual(backwardResult, x);
+
+                const div = document.createElement('div');
+                div.className = 'step';
+                div.innerHTML = `
+                    <h4>Pattern Pair ${p} Test:</h4>
+                    <p>Forward (X→Y):</p>
+                    <p>Input X: [${x.join(', ')}]</p>
+                    <p>Expected Y: [${y.join(', ')}]</p>
+                    <p>Result Y: [${forwardResult.join(', ')}]</p>
+                    <p>Status: ${forwardStable ? 'STABLE ✓' : 'NOT STABLE ✗'}</p>
+                    
+                    <p>Backward (Y→X):</p>
+                    <p>Input Y: [${y.join(', ')}]</p>
+                    <p>Expected X: [${x.join(', ')}]</p>
+                    <p>Result X: [${backwardResult.join(', ')}]</p>
+                    <p>Status: ${backwardStable ? 'STABLE ✓' : 'NOT STABLE ✗'}</p>
+                `;
+                results.appendChild(div);
+            }
+        }
+
+        function probeNetwork(direction) {
+            const weightMatrix = calculateWeightMatrix();
+            const results = document.getElementById('probeResults');
+            results.innerHTML = '';
+            
+            let currentX, currentY;
+            if (direction === 'X') {
+                currentX = getPatternValues('probeX');
+                currentY = multiplyMatrixVector(weightMatrix, currentX);
+            } else {
+                currentY = getPatternValues('probeY');
+                currentX = multiplyMatrixVector(weightMatrix, currentY, true);
+            }
+
+            let iterations = 0;
+            const maxIterations = 10;
+            let hasConverged = false;
+
+            while (iterations < maxIterations && !hasConverged) {
+                iterations++;
+                const div = document.createElement('div');
+                div.className = 'step';
+                
+                let newX, newY;
+                if (direction === 'X') {
+                    newX = multiplyMatrixVector(weightMatrix, currentY, true);
+                    newY = multiplyMatrixVector(weightMatrix, newX);
+                    
+                    div.innerHTML = `
+                    <h4>Iteration ${iterations}:</h4>
+                    <p>X Pattern: [${newX.join(', ')}]</p>
+                    <p>Y Pattern: [${newY.join(', ')}]</p>
+                `;
+            } else {
+                newY = multiplyMatrixVector(weightMatrix, currentX);
+                newX = multiplyMatrixVector(weightMatrix, newY, true);
+                
+                div.innerHTML = `
+                    <h4>Iteration ${iterations}:</h4>
+                    <p>Y Pattern: [${newY.join(', ')}]</p>
+                    <p>X Pattern: [${newX.join(', ')}]</p>
+                `;
+            }
+            
+            results.appendChild(div);
+            
+            hasConverged = arraysEqual(currentX, newX) && arraysEqual(currentY, newY);
+            currentX = newX;
+            currentY = newY;
+        }
+
+        const summary = document.createElement('div');
+        summary.innerHTML = `
+            <h4>Probe Summary:</h4>
+            <p>${hasConverged ? 'Network converged!' : 'Maximum iterations reached'}</p>
+            <p>Final X pattern: [${currentX.join(', ')}]</p>
+            <p>Final Y pattern: [${currentY.join(', ')}]</p>
+        `;
+        results.appendChild(summary);
+    }
+
+    // Initialize the page
+    createMatrixInputs('x1', xSize);
+    createMatrixInputs('y1', ySize);
+    createMatrixInputs('probeX', xSize);
+    createMatrixInputs('probeY', ySize);
+
+    // Toggle guide
+    document.getElementById('toggleGuide').onclick = function() {
+        const guide = document.getElementById('guideSection');
+        guide.style.display = guide.style.display === 'none' ? 'block' : 'none';
+    }
+</script>
+</body>
+</html>
