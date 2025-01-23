@@ -1,0 +1,365 @@
+{
+  "type": "directory",
+  "name": "foundations-ux-design",
+  "path": "foundations-ux-design",
+  "children": [
+    {
+      "type": "directory",
+      "name": "01-module-1",
+      "path": "01-module-1",
+      "children": [
+        {
+          "type": "directory",
+          "name": "01-start-the-program",
+          "path": "01-module-1\\01-start-the-program",
+          "children": [
+            {
+              "type": "file",
+              "name": "01-welcome.md",
+              "path": "01-module-1\\01-start-the-program\\01-welcome.md"
+            },
+            {
+              "type": "file",
+              "name": "02-begin.md",
+              "path": "01-module-1\\01-start-the-program\\02-begin.md"
+            },
+            {
+              "type": "file",
+              "name": "03-introduction.md",
+              "path": "01-module-1\\01-start-the-program\\03-introduction.md"
+            },
+            {
+              "type": "file",
+              "name": "04-resources.md",
+              "path": "01-module-1\\01-start-the-program\\04-resources.md"
+            }
+          ]
+        },
+        {
+          "type": "directory",
+          "name": "02-know-design",
+          "path": "01-module-1\\02-know-design",
+          "children": [
+            {
+              "type": "file",
+              "name": "01-basics.md",
+              "path": "01-module-1\\02-know-design\\01-basics.md"
+            },
+            {
+              "type": "file",
+              "name": "02-jobs.md",
+              "path": "01-module-1\\02-know-design\\02-jobs.md"
+            },
+            {
+              "type": "file",
+              "name": "03-careers.md",
+              "path": "01-module-1\\02-know-design\\03-careers.md"
+            },
+            {
+              "type": "file",
+              "name": "04-tools.md",
+              "path": "01-module-1\\02-know-design\\04-tools.md"
+            },
+            {
+              "type": "file",
+              "name": "05-stay-current.md",
+              "path": "01-module-1\\02-know-design\\05-stay-current.md"
+            },
+            {
+              "type": "file",
+              "name": "06-life-cycle.md",
+              "path": "01-module-1\\02-know-design\\06-life-cycle.md"
+            },
+            {
+              "type": "file",
+              "name": "07-good-ux.md",
+              "path": "01-module-1\\02-know-design\\07-good-ux.md"
+            },
+            {
+              "type": "file",
+              "name": "08-characteristics.md",
+              "path": "01-module-1\\02-know-design\\08-characteristics.md"
+            }
+          ]
+        },
+        {
+          "type": "directory",
+          "name": "03-explore-jobs",
+          "path": "01-module-1\\03-explore-jobs",
+          "children": [
+            {
+              "type": "file",
+              "name": "01-responsibilities.md",
+              "path": "01-module-1\\03-explore-jobs\\01-responsibilities.md"
+            },
+            {
+              "type": "file",
+              "name": "02-specialists.md",
+              "path": "01-module-1\\03-explore-jobs\\02-specialists.md"
+            },
+            {
+              "type": "file",
+              "name": "03-the-role.md",
+              "path": "01-module-1\\03-explore-jobs\\03-the-role.md"
+            },
+            {
+              "type": "file",
+              "name": "04-team-interact.md",
+              "path": "01-module-1\\03-explore-jobs\\04-team-interact.md"
+            },
+            {
+              "type": "file",
+              "name": "05-different-companies.md",
+              "path": "01-module-1\\03-explore-jobs\\05-different-companies.md"
+            },
+            {
+              "type": "file",
+              "name": "06-influence.md",
+              "path": "01-module-1\\03-explore-jobs\\06-influence.md"
+            },
+            {
+              "type": "file",
+              "name": "07-glossary.md",
+              "path": "01-module-1\\03-explore-jobs\\07-glossary.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "directory",
+      "name": "02-module-2",
+      "path": "02-module-2",
+      "children": [
+        {
+          "type": "directory",
+          "name": "01-practicies-trends",
+          "path": "02-module-2\\01-practicies-trends",
+          "children": [
+            {
+              "type": "file",
+              "name": "01-universal-design.md",
+              "path": "02-module-2\\01-practicies-trends\\01-universal-design.md"
+            },
+            {
+              "type": "file",
+              "name": "02-equity-design.md",
+              "path": "02-module-2\\01-practicies-trends\\02-equity-design.md"
+            },
+            {
+              "type": "file",
+              "name": "03-platforms.md",
+              "path": "02-module-2\\01-practicies-trends\\03-platforms.md"
+            }
+          ]
+        },
+        {
+          "type": "directory",
+          "name": "02-know-the-user",
+          "path": "02-module-2\\02-know-the-user",
+          "children": [
+            {
+              "type": "file",
+              "name": "01-user-centered.md",
+              "path": "02-module-2\\02-know-the-user\\01-user-centered.md"
+            },
+            {
+              "type": "file",
+              "name": "02-users.md",
+              "path": "02-module-2\\02-know-the-user\\02-users.md"
+            },
+            {
+              "type": "file",
+              "name": "03-assistive-tech.md",
+              "path": "02-module-2\\02-know-the-user\\03-assistive-tech.md"
+            },
+            {
+              "type": "file",
+              "name": "04-reading.md",
+              "path": "02-module-2\\02-know-the-user\\04-reading.md"
+            },
+            {
+              "type": "file",
+              "name": "05-glossary.md",
+              "path": "02-module-2\\02-know-the-user\\05-glossary.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "directory",
+      "name": "03-module-3",
+      "path": "03-module-3",
+      "children": [
+        {
+          "type": "directory",
+          "name": "01-framework",
+          "path": "03-module-3\\01-framework",
+          "children": [
+            {
+              "type": "file",
+              "name": "01-design-thinking.md",
+              "path": "03-module-3\\01-framework\\01-design-thinking.md"
+            },
+            {
+              "type": "file",
+              "name": "02-requirements.md",
+              "path": "03-module-3\\01-framework\\02-requirements.md"
+            },
+            {
+              "type": "file",
+              "name": "03-empathize.md",
+              "path": "03-module-3\\01-framework\\03-empathize.md"
+            },
+            {
+              "type": "file",
+              "name": "04-define-needs.md",
+              "path": "03-module-3\\01-framework\\04-define-needs.md"
+            },
+            {
+              "type": "file",
+              "name": "05-ideate-solutions.md",
+              "path": "03-module-3\\01-framework\\05-ideate-solutions.md"
+            },
+            {
+              "type": "file",
+              "name": "06-prototype.md",
+              "path": "03-module-3\\01-framework\\06-prototype.md"
+            },
+            {
+              "type": "file",
+              "name": "07-test.md",
+              "path": "03-module-3\\01-framework\\07-test.md"
+            }
+          ]
+        },
+        {
+          "type": "directory",
+          "name": "02-design-sprints",
+          "path": "03-module-3\\02-design-sprints",
+          "children": [
+            {
+              "type": "file",
+              "name": "01-introduction.md",
+              "path": "03-module-3\\02-design-sprints\\01-introduction.md"
+            },
+            {
+              "type": "file",
+              "name": "02-five-phases.md",
+              "path": "03-module-3\\02-design-sprints\\02-five-phases.md"
+            },
+            {
+              "type": "file",
+              "name": "03-learn-more.md",
+              "path": "03-module-3\\02-design-sprints\\03-learn-more.md"
+            },
+            {
+              "type": "file",
+              "name": "04-plan.md",
+              "path": "03-module-3\\02-design-sprints\\04-plan.md"
+            },
+            {
+              "type": "file",
+              "name": "05-entry-level.md",
+              "path": "03-module-3\\02-design-sprints\\05-entry-level.md"
+            },
+            {
+              "type": "file",
+              "name": "06-organize.md",
+              "path": "03-module-3\\02-design-sprints\\06-organize.md"
+            },
+            {
+              "type": "file",
+              "name": "07-retrospective.md",
+              "path": "03-module-3\\02-design-sprints\\07-retrospective.md"
+            },
+            {
+              "type": "file",
+              "name": "08-common-questions.md",
+              "path": "03-module-3\\02-design-sprints\\08-common-questions.md"
+            },
+            {
+              "type": "file",
+              "name": "09-glossary.md",
+              "path": "03-module-3\\02-design-sprints\\09-glossary.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "directory",
+      "name": "04-module-4",
+      "path": "04-module-4",
+      "children": [
+        {
+          "type": "directory",
+          "name": "01-research-in-design",
+          "path": "04-module-4\\01-research-in-design",
+          "children": [
+            {
+              "type": "file",
+              "name": "01-integrate-research.md",
+              "path": "04-module-4\\01-research-in-design\\01-integrate-research.md"
+            },
+            {
+              "type": "file",
+              "name": "02-introduction.md",
+              "path": "04-module-4\\01-research-in-design\\02-introduction.md"
+            },
+            {
+              "type": "file",
+              "name": "03-learn-more.md",
+              "path": "04-module-4\\01-research-in-design\\03-learn-more.md"
+            }
+          ]
+        },
+        {
+          "type": "directory",
+          "name": "02-research-methods",
+          "path": "04-module-4\\02-research-methods",
+          "children": [
+            {
+              "type": "file",
+              "name": "01-right-research-method.md",
+              "path": "04-module-4\\02-research-methods\\01-right-research-method.md"
+            },
+            {
+              "type": "file",
+              "name": "02-benefit-drawback.md",
+              "path": "04-module-4\\02-research-methods\\02-benefit-drawback.md"
+            },
+            {
+              "type": "file",
+              "name": "03-learn-more.md",
+              "path": "04-module-4\\02-research-methods\\03-learn-more.md"
+            }
+          ]
+        },
+        {
+          "type": "directory",
+          "name": "03-identify-biases",
+          "path": "04-module-4\\03-identify-biases",
+          "children": [
+            {
+              "type": "file",
+              "name": "01-types-of-bias.md",
+              "path": "04-module-4\\03-identify-biases\\01-types-of-bias.md"
+            },
+            {
+              "type": "file",
+              "name": "02-learn-more.md",
+              "path": "04-module-4\\03-identify-biases\\02-learn-more.md"
+            },
+            {
+              "type": "file",
+              "name": "03-glossary.md",
+              "path": "04-module-4\\03-identify-biases\\03-glossary.md"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

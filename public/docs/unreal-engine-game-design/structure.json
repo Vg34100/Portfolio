@@ -1,0 +1,931 @@
+{
+  "type": "directory",
+  "name": "unreal-engine-game-design",
+  "path": "unreal-engine-game-design",
+  "children": [
+    {
+      "type": "directory",
+      "name": "unreal-engine-fundamentals",
+      "path": "unreal-engine-fundamentals",
+      "children": [
+        {
+          "type": "directory",
+          "name": "01-module-1",
+          "path": "unreal-engine-fundamentals\\01-module-1",
+          "children": [
+            {
+              "type": "directory",
+              "name": "01-first-steps",
+              "path": "unreal-engine-fundamentals\\01-module-1\\01-first-steps",
+              "children": [
+                {
+                  "type": "file",
+                  "name": "01-introduction.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\01-first-steps\\01-introduction.md"
+                },
+                {
+                  "type": "file",
+                  "name": "02-downloading-installing.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\01-first-steps\\02-downloading-installing.md"
+                },
+                {
+                  "type": "file",
+                  "name": "03-launcher.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\01-first-steps\\03-launcher.md"
+                },
+                {
+                  "type": "file",
+                  "name": "04-first-project.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\01-first-steps\\04-first-project.md"
+                },
+                {
+                  "type": "file",
+                  "name": "05-navigation.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\01-first-steps\\05-navigation.md"
+                },
+                {
+                  "type": "file",
+                  "name": "06-content.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\01-first-steps\\06-content.md"
+                },
+                {
+                  "type": "file",
+                  "name": "07-interface-exploration.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\01-first-steps\\07-interface-exploration.md"
+                },
+                {
+                  "type": "file",
+                  "name": "08-scalability-plugins.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\01-first-steps\\08-scalability-plugins.md"
+                },
+                {
+                  "type": "file",
+                  "name": "09-world-settings.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\01-first-steps\\09-world-settings.md"
+                },
+                {
+                  "type": "file",
+                  "name": "10-editor-preferences.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\01-first-steps\\10-editor-preferences.md"
+                },
+                {
+                  "type": "file",
+                  "name": "11-project-settings.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\01-first-steps\\11-project-settings.md"
+                },
+                {
+                  "type": "file",
+                  "name": "12-level-editor.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\01-first-steps\\12-level-editor.md"
+                },
+                {
+                  "type": "file",
+                  "name": "13-content-browser.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\01-first-steps\\13-content-browser.md"
+                },
+                {
+                  "type": "file",
+                  "name": "14-favorites-collections.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\01-first-steps\\14-favorites-collections.md"
+                },
+                {
+                  "type": "file",
+                  "name": "15-references-redirectors.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\01-first-steps\\15-references-redirectors.md"
+                },
+                {
+                  "type": "file",
+                  "name": "16-documentation.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\01-first-steps\\16-documentation.md"
+                },
+                {
+                  "type": "file",
+                  "name": "17-actor-transformations.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\01-first-steps\\17-actor-transformations.md"
+                }
+              ]
+            },
+            {
+              "type": "directory",
+              "name": "02-quixel-bridge",
+              "path": "unreal-engine-fundamentals\\01-module-1\\02-quixel-bridge",
+              "children": [
+                {
+                  "type": "file",
+                  "name": "01-introduction.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\02-quixel-bridge\\01-introduction.md"
+                },
+                {
+                  "type": "file",
+                  "name": "02-unreal-engine-access.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\02-quixel-bridge\\02-unreal-engine-access.md"
+                },
+                {
+                  "type": "file",
+                  "name": "03-desktop-access.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\02-quixel-bridge\\03-desktop-access.md"
+                },
+                {
+                  "type": "file",
+                  "name": "04-adding-3d-assets.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\02-quixel-bridge\\04-adding-3d-assets.md"
+                },
+                {
+                  "type": "file",
+                  "name": "05-adding-other-assets.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\02-quixel-bridge\\05-adding-other-assets.md"
+                },
+                {
+                  "type": "file",
+                  "name": "06-import-other-sources.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\02-quixel-bridge\\06-import-other-sources.md"
+                },
+                {
+                  "type": "file",
+                  "name": "07-quixel-trees.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\02-quixel-bridge\\07-quixel-trees.md"
+                }
+              ]
+            },
+            {
+              "type": "directory",
+              "name": "03-materials",
+              "path": "unreal-engine-fundamentals\\01-module-1\\03-materials",
+              "children": [
+                {
+                  "type": "file",
+                  "name": "01-introduction.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\03-materials\\01-introduction.md"
+                },
+                {
+                  "type": "file",
+                  "name": "02-first-material.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\03-materials\\02-first-material.md"
+                },
+                {
+                  "type": "file",
+                  "name": "03-material-instance.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\03-materials\\03-material-instance.md"
+                },
+                {
+                  "type": "file",
+                  "name": "04-blend-modes.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\03-materials\\04-blend-modes.md"
+                },
+                {
+                  "type": "file",
+                  "name": "05-shading-models.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\03-materials\\05-shading-models.md"
+                },
+                {
+                  "type": "file",
+                  "name": "06-texture-assets.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\03-materials\\06-texture-assets.md"
+                },
+                {
+                  "type": "file",
+                  "name": "07-pbr-diffuse.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\03-materials\\07-pbr-diffuse.md"
+                },
+                {
+                  "type": "file",
+                  "name": "08-pbr-metallic.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\03-materials\\08-pbr-metallic.md"
+                },
+                {
+                  "type": "file",
+                  "name": "09-pbr-roughness.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\03-materials\\09-pbr-roughness.md"
+                },
+                {
+                  "type": "file",
+                  "name": "10-pbr-emissive.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\03-materials\\10-pbr-emissive.md"
+                },
+                {
+                  "type": "file",
+                  "name": "11-pbr-normals.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\03-materials\\11-pbr-normals.md"
+                },
+                {
+                  "type": "file",
+                  "name": "12-pbr-multi-switching.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\03-materials\\12-pbr-multi-switching.md"
+                },
+                {
+                  "type": "file",
+                  "name": "13-pbr-named-reroutes.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\03-materials\\13-pbr-named-reroutes.md"
+                },
+                {
+                  "type": "file",
+                  "name": "14-pbr-parameter-groups.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\03-materials\\14-pbr-parameter-groups.md"
+                },
+                {
+                  "type": "file",
+                  "name": "15-pbr-uv-material.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\03-materials\\15-pbr-uv-material.md"
+                },
+                {
+                  "type": "file",
+                  "name": "16-create-your-own.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\03-materials\\16-create-your-own.md"
+                },
+                {
+                  "type": "file",
+                  "name": "17-review.md",
+                  "path": "unreal-engine-fundamentals\\01-module-1\\03-materials\\17-review.md"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "directory",
+          "name": "02-module-2",
+          "path": "unreal-engine-fundamentals\\02-module-2",
+          "children": [
+            {
+              "type": "directory",
+              "name": "01-landscape-mode",
+              "path": "unreal-engine-fundamentals\\02-module-2\\01-landscape-mode",
+              "children": [
+                {
+                  "type": "file",
+                  "name": "01-introduction.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\01-landscape-mode\\01-introduction.md"
+                },
+                {
+                  "type": "file",
+                  "name": "02-basics.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\01-landscape-mode\\02-basics.md"
+                },
+                {
+                  "type": "file",
+                  "name": "03-sculpting.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\01-landscape-mode\\03-sculpting.md"
+                },
+                {
+                  "type": "file",
+                  "name": "04-managing.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\01-landscape-mode\\04-managing.md"
+                },
+                {
+                  "type": "file",
+                  "name": "05-height-maps.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\01-landscape-mode\\05-height-maps.md"
+                },
+                {
+                  "type": "file",
+                  "name": "06-packed-texture.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\01-landscape-mode\\06-packed-texture.md"
+                },
+                {
+                  "type": "file",
+                  "name": "07-alpha-brush.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\01-landscape-mode\\07-alpha-brush.md"
+                },
+                {
+                  "type": "file",
+                  "name": "08-painting.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\01-landscape-mode\\08-painting.md"
+                }
+              ]
+            },
+            {
+              "type": "directory",
+              "name": "02-refine",
+              "path": "unreal-engine-fundamentals\\02-module-2\\02-refine",
+              "children": [
+                {
+                  "type": "file",
+                  "name": "01-uv-coordinates.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\02-refine\\01-uv-coordinates.md"
+                },
+                {
+                  "type": "file",
+                  "name": "02-micro-variation.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\02-refine\\02-micro-variation.md"
+                },
+                {
+                  "type": "file",
+                  "name": "03-macro-variation.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\02-refine\\03-macro-variation.md"
+                },
+                {
+                  "type": "file",
+                  "name": "04-distance-blending.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\02-refine\\04-distance-blending.md"
+                },
+                {
+                  "type": "file",
+                  "name": "05-grass-node.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\02-refine\\05-grass-node.md"
+                },
+                {
+                  "type": "file",
+                  "name": "06-foilage-adjustment.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\02-refine\\06-foilage-adjustment.md"
+                },
+                {
+                  "type": "file",
+                  "name": "07-foilage-mode.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\02-refine\\07-foilage-mode.md"
+                },
+                {
+                  "type": "file",
+                  "name": "08-procedural-foilage.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\02-refine\\08-procedural-foilage.md"
+                }
+              ]
+            },
+            {
+              "type": "directory",
+              "name": "03-world-building",
+              "path": "unreal-engine-fundamentals\\02-module-2\\03-world-building",
+              "children": [
+                {
+                  "type": "file",
+                  "name": "01-automaterial.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\03-world-building\\01-automaterial.md"
+                },
+                {
+                  "type": "file",
+                  "name": "02-layer-splines.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\03-world-building\\02-layer-splines.md"
+                },
+                {
+                  "type": "file",
+                  "name": "03-blueprint-brushes.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\03-world-building\\03-blueprint-brushes.md"
+                },
+                {
+                  "type": "file",
+                  "name": "04-water-tools.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\03-world-building\\04-water-tools.md"
+                },
+                {
+                  "type": "file",
+                  "name": "05-lakes-rivers.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\03-world-building\\05-lakes-rivers.md"
+                },
+                {
+                  "type": "file",
+                  "name": "06-blend-materials.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\03-world-building\\06-blend-materials.md"
+                },
+                {
+                  "type": "file",
+                  "name": "07-mesh-paint.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\03-world-building\\07-mesh-paint.md"
+                },
+                {
+                  "type": "file",
+                  "name": "08-asset-placement.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\03-world-building\\08-asset-placement.md"
+                },
+                {
+                  "type": "file",
+                  "name": "09-traditional-levels.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\03-world-building\\09-traditional-levels.md"
+                },
+                {
+                  "type": "file",
+                  "name": "10-world-partition.md",
+                  "path": "unreal-engine-fundamentals\\02-module-2\\03-world-building\\10-world-partition.md"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "directory",
+          "name": "03-module-3",
+          "path": "unreal-engine-fundamentals\\03-module-3",
+          "children": [
+            {
+              "type": "directory",
+              "name": "01-lighting",
+              "path": "unreal-engine-fundamentals\\03-module-3\\01-lighting",
+              "children": [
+                {
+                  "type": "file",
+                  "name": "01-introduction.md",
+                  "path": "unreal-engine-fundamentals\\03-module-3\\01-lighting\\01-introduction.md"
+                },
+                {
+                  "type": "file",
+                  "name": "02-terminology.md",
+                  "path": "unreal-engine-fundamentals\\03-module-3\\01-lighting\\02-terminology.md"
+                },
+                {
+                  "type": "file",
+                  "name": "03-light-types.md",
+                  "path": "unreal-engine-fundamentals\\03-module-3\\01-lighting\\03-light-types.md"
+                },
+                {
+                  "type": "file",
+                  "name": "04-light-features.md",
+                  "path": "unreal-engine-fundamentals\\03-module-3\\01-lighting\\04-light-features.md"
+                },
+                {
+                  "type": "file",
+                  "name": "05-environmental-light.md",
+                  "path": "unreal-engine-fundamentals\\03-module-3\\01-lighting\\05-environmental-light.md"
+                },
+                {
+                  "type": "file",
+                  "name": "06-sun-sky.md",
+                  "path": "unreal-engine-fundamentals\\03-module-3\\01-lighting\\06-sun-sky.md"
+                },
+                {
+                  "type": "file",
+                  "name": "07-post-process.md",
+                  "path": "unreal-engine-fundamentals\\03-module-3\\01-lighting\\07-post-process.md"
+                },
+                {
+                  "type": "file",
+                  "name": "08-baked-lighting.md",
+                  "path": "unreal-engine-fundamentals\\03-module-3\\01-lighting\\08-baked-lighting.md"
+                },
+                {
+                  "type": "file",
+                  "name": "09-lumen.md",
+                  "path": "unreal-engine-fundamentals\\03-module-3\\01-lighting\\09-lumen.md"
+                }
+              ]
+            },
+            {
+              "type": "directory",
+              "name": "02-sound",
+              "path": "unreal-engine-fundamentals\\03-module-3\\02-sound",
+              "children": [
+                {
+                  "type": "file",
+                  "name": "01-introduction.md",
+                  "path": "unreal-engine-fundamentals\\03-module-3\\02-sound\\01-introduction.md"
+                },
+                {
+                  "type": "file",
+                  "name": "02-import-audio.md",
+                  "path": "unreal-engine-fundamentals\\03-module-3\\02-sound\\02-import-audio.md"
+                },
+                {
+                  "type": "file",
+                  "name": "03-sound-cues.md",
+                  "path": "unreal-engine-fundamentals\\03-module-3\\02-sound\\03-sound-cues.md"
+                },
+                {
+                  "type": "file",
+                  "name": "04-footsteps.md",
+                  "path": "unreal-engine-fundamentals\\03-module-3\\02-sound\\04-footsteps.md"
+                },
+                {
+                  "type": "file",
+                  "name": "05-sound-attenuation.md",
+                  "path": "unreal-engine-fundamentals\\03-module-3\\02-sound\\05-sound-attenuation.md"
+                },
+                {
+                  "type": "file",
+                  "name": "06-ambient-sounds.md",
+                  "path": "unreal-engine-fundamentals\\03-module-3\\02-sound\\06-ambient-sounds.md"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "directory",
+          "name": "04-module-4",
+          "path": "unreal-engine-fundamentals\\04-module-4",
+          "children": [
+            {
+              "type": "directory",
+              "name": "01-source-control",
+              "path": "unreal-engine-fundamentals\\04-module-4\\01-source-control",
+              "children": [
+                {
+                  "type": "file",
+                  "name": "01-introduction.md",
+                  "path": "unreal-engine-fundamentals\\04-module-4\\01-source-control\\01-introduction.md"
+                },
+                {
+                  "type": "file",
+                  "name": "02-overview.md",
+                  "path": "unreal-engine-fundamentals\\04-module-4\\01-source-control\\02-overview.md"
+                },
+                {
+                  "type": "file",
+                  "name": "03-workflow.md",
+                  "path": "unreal-engine-fundamentals\\04-module-4\\01-source-control\\03-workflow.md"
+                },
+                {
+                  "type": "file",
+                  "name": "04-helix.md",
+                  "path": "unreal-engine-fundamentals\\04-module-4\\01-source-control\\04-helix.md"
+                },
+                {
+                  "type": "file",
+                  "name": "05-packaging.md",
+                  "path": "unreal-engine-fundamentals\\04-module-4\\01-source-control\\05-packaging.md"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "directory",
+      "name": "unreal-level-design",
+      "path": "unreal-level-design",
+      "children": [
+        {
+          "type": "directory",
+          "name": "01-module-1",
+          "path": "unreal-level-design\\01-module-1",
+          "children": [
+            {
+              "type": "directory",
+              "name": "01-level-design",
+              "path": "unreal-level-design\\01-module-1\\01-level-design",
+              "children": [
+                {
+                  "type": "file",
+                  "name": "01-introduction.md",
+                  "path": "unreal-level-design\\01-module-1\\01-level-design\\01-introduction.md"
+                },
+                {
+                  "type": "file",
+                  "name": "02-goals.md",
+                  "path": "unreal-level-design\\01-module-1\\01-level-design\\02-goals.md"
+                },
+                {
+                  "type": "file",
+                  "name": "03-game-vs-level.md",
+                  "path": "unreal-level-design\\01-module-1\\01-level-design\\03-game-vs-level.md"
+                },
+                {
+                  "type": "file",
+                  "name": "04-types.md",
+                  "path": "unreal-level-design\\01-module-1\\01-level-design\\04-types.md"
+                },
+                {
+                  "type": "file",
+                  "name": "05-narratives.md",
+                  "path": "unreal-level-design\\01-module-1\\01-level-design\\05-narratives.md"
+                },
+                {
+                  "type": "file",
+                  "name": "06-drama.md",
+                  "path": "unreal-level-design\\01-module-1\\01-level-design\\06-drama.md"
+                },
+                {
+                  "type": "file",
+                  "name": "07-challenge.md",
+                  "path": "unreal-level-design\\01-module-1\\01-level-design\\07-challenge.md"
+                },
+                {
+                  "type": "file",
+                  "name": "08-beauty.md",
+                  "path": "unreal-level-design\\01-module-1\\01-level-design\\08-beauty.md"
+                },
+                {
+                  "type": "file",
+                  "name": "09-truth.md",
+                  "path": "unreal-level-design\\01-module-1\\01-level-design\\09-truth.md"
+                },
+                {
+                  "type": "file",
+                  "name": "10-player-flow.md",
+                  "path": "unreal-level-design\\01-module-1\\01-level-design\\10-player-flow.md"
+                }
+              ]
+            },
+            {
+              "type": "directory",
+              "name": "02-how-it-works",
+              "path": "unreal-level-design\\01-module-1\\02-how-it-works",
+              "children": [
+                {
+                  "type": "file",
+                  "name": "01-introduction.md",
+                  "path": "unreal-level-design\\01-module-1\\02-how-it-works\\01-introduction.md"
+                },
+                {
+                  "type": "file",
+                  "name": "02-engagement-loop.md",
+                  "path": "unreal-level-design\\01-module-1\\02-how-it-works\\02-engagement-loop.md"
+                },
+                {
+                  "type": "file",
+                  "name": "03-beats.md",
+                  "path": "unreal-level-design\\01-module-1\\02-how-it-works\\03-beats.md"
+                },
+                {
+                  "type": "file",
+                  "name": "04-sight.md",
+                  "path": "unreal-level-design\\01-module-1\\02-how-it-works\\04-sight.md"
+                },
+                {
+                  "type": "file",
+                  "name": "05-sound.md",
+                  "path": "unreal-level-design\\01-module-1\\02-how-it-works\\05-sound.md"
+                },
+                {
+                  "type": "file",
+                  "name": "06-touch.md",
+                  "path": "unreal-level-design\\01-module-1\\02-how-it-works\\06-touch.md"
+                },
+                {
+                  "type": "file",
+                  "name": "07-understanding.md",
+                  "path": "unreal-level-design\\01-module-1\\02-how-it-works\\07-understanding.md"
+                },
+                {
+                  "type": "file",
+                  "name": "08-cognition.md",
+                  "path": "unreal-level-design\\01-module-1\\02-how-it-works\\08-cognition.md"
+                },
+                {
+                  "type": "file",
+                  "name": "09-narrative.md",
+                  "path": "unreal-level-design\\01-module-1\\02-how-it-works\\09-narrative.md"
+                },
+                {
+                  "type": "file",
+                  "name": "10-mechanics.md",
+                  "path": "unreal-level-design\\01-module-1\\02-how-it-works\\10-mechanics.md"
+                },
+                {
+                  "type": "file",
+                  "name": "11-how-to-look.md",
+                  "path": "unreal-level-design\\01-module-1\\02-how-it-works\\11-how-to-look.md"
+                },
+                {
+                  "type": "file",
+                  "name": "12-charting.md",
+                  "path": "unreal-level-design\\01-module-1\\02-how-it-works\\12-charting.md"
+                },
+                {
+                  "type": "file",
+                  "name": "13-measuring.md",
+                  "path": "unreal-level-design\\01-module-1\\02-how-it-works\\13-measuring.md"
+                },
+                {
+                  "type": "file",
+                  "name": "14-metanarrative.md",
+                  "path": "unreal-level-design\\01-module-1\\02-how-it-works\\14-metanarrative.md"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "directory",
+          "name": "02-module-2",
+          "path": "unreal-level-design\\02-module-2",
+          "children": [
+            {
+              "type": "directory",
+              "name": "01-how-to-look",
+              "path": "unreal-level-design\\02-module-2\\01-how-to-look",
+              "children": [
+                {
+                  "type": "file",
+                  "name": "01-project.md",
+                  "path": "unreal-level-design\\02-module-2\\01-how-to-look\\01-project.md"
+                },
+                {
+                  "type": "file",
+                  "name": "02-intentions.md",
+                  "path": "unreal-level-design\\02-module-2\\01-how-to-look\\02-intentions.md"
+                },
+                {
+                  "type": "file",
+                  "name": "03-shaping.md",
+                  "path": "unreal-level-design\\02-module-2\\01-how-to-look\\03-shaping.md"
+                },
+                {
+                  "type": "file",
+                  "name": "04-pathing.md",
+                  "path": "unreal-level-design\\02-module-2\\01-how-to-look\\04-pathing.md"
+                },
+                {
+                  "type": "file",
+                  "name": "05-change-route.md",
+                  "path": "unreal-level-design\\02-module-2\\01-how-to-look\\05-change-route.md"
+                },
+                {
+                  "type": "file",
+                  "name": "06-adding-interest.md",
+                  "path": "unreal-level-design\\02-module-2\\01-how-to-look\\06-adding-interest.md"
+                },
+                {
+                  "type": "file",
+                  "name": "07-enclosure-cover.md",
+                  "path": "unreal-level-design\\02-module-2\\01-how-to-look\\07-enclosure-cover.md"
+                },
+                {
+                  "type": "file",
+                  "name": "08-gating.md",
+                  "path": "unreal-level-design\\02-module-2\\01-how-to-look\\08-gating.md"
+                },
+                {
+                  "type": "file",
+                  "name": "09-critical-path.md",
+                  "path": "unreal-level-design\\02-module-2\\01-how-to-look\\09-critical-path.md"
+                },
+                {
+                  "type": "file",
+                  "name": "10-multiplayer-design.md",
+                  "path": "unreal-level-design\\02-module-2\\01-how-to-look\\10-multiplayer-design.md"
+                },
+                {
+                  "type": "file",
+                  "name": "11-biomes.md",
+                  "path": "unreal-level-design\\02-module-2\\01-how-to-look\\11-biomes.md"
+                },
+                {
+                  "type": "file",
+                  "name": "12-vistas.md",
+                  "path": "unreal-level-design\\02-module-2\\01-how-to-look\\12-vistas.md"
+                }
+              ]
+            },
+            {
+              "type": "directory",
+              "name": "02-designing",
+              "path": "unreal-level-design\\02-module-2\\02-designing",
+              "children": [
+                {
+                  "type": "file",
+                  "name": "01-scale.md",
+                  "path": "unreal-level-design\\02-module-2\\02-designing\\01-scale.md"
+                },
+                {
+                  "type": "file",
+                  "name": "02-massing.md",
+                  "path": "unreal-level-design\\02-module-2\\02-designing\\02-massing.md"
+                },
+                {
+                  "type": "file",
+                  "name": "03-wayfinding.md",
+                  "path": "unreal-level-design\\02-module-2\\02-designing\\03-wayfinding.md"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "directory",
+          "name": "03-module-3",
+          "path": "unreal-level-design\\03-module-3",
+          "children": [
+            {
+              "type": "directory",
+              "name": "01-design-documents",
+              "path": "unreal-level-design\\03-module-3\\01-design-documents",
+              "children": [
+                {
+                  "type": "file",
+                  "name": "01-documenting.md",
+                  "path": "unreal-level-design\\03-module-3\\01-design-documents\\01-documenting.md"
+                },
+                {
+                  "type": "file",
+                  "name": "02-level-design-doc.md",
+                  "path": "unreal-level-design\\03-module-3\\01-design-documents\\02-level-design-doc.md"
+                },
+                {
+                  "type": "file",
+                  "name": "03-collaboration.md",
+                  "path": "unreal-level-design\\03-module-3\\01-design-documents\\03-collaboration.md"
+                },
+                {
+                  "type": "file",
+                  "name": "04-diagrams.md",
+                  "path": "unreal-level-design\\03-module-3\\01-design-documents\\04-diagrams.md"
+                }
+              ]
+            },
+            {
+              "type": "directory",
+              "name": "02-testing-design",
+              "path": "unreal-level-design\\03-module-3\\02-testing-design",
+              "children": [
+                {
+                  "type": "file",
+                  "name": "01-testing.md",
+                  "path": "unreal-level-design\\03-module-3\\02-testing-design\\01-testing.md"
+                },
+                {
+                  "type": "file",
+                  "name": "02-milestones.md",
+                  "path": "unreal-level-design\\03-module-3\\02-testing-design\\02-milestones.md"
+                },
+                {
+                  "type": "file",
+                  "name": "03-qualities.md",
+                  "path": "unreal-level-design\\03-module-3\\02-testing-design\\03-qualities.md"
+                },
+                {
+                  "type": "file",
+                  "name": "04-fault-testing.md",
+                  "path": "unreal-level-design\\03-module-3\\02-testing-design\\04-fault-testing.md"
+                },
+                {
+                  "type": "file",
+                  "name": "05-data-collection.md",
+                  "path": "unreal-level-design\\03-module-3\\02-testing-design\\05-data-collection.md"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "directory",
+          "name": "04-module-4",
+          "path": "unreal-level-design\\04-module-4",
+          "children": [
+            {
+              "type": "directory",
+              "name": "01-greyboxing-levels",
+              "path": "unreal-level-design\\04-module-4\\01-greyboxing-levels",
+              "children": [
+                {
+                  "type": "file",
+                  "name": "01-building.md",
+                  "path": "unreal-level-design\\04-module-4\\01-greyboxing-levels\\01-building.md"
+                },
+                {
+                  "type": "file",
+                  "name": "02-greyboxing.md",
+                  "path": "unreal-level-design\\04-module-4\\01-greyboxing-levels\\02-greyboxing.md"
+                }
+              ]
+            },
+            {
+              "type": "directory",
+              "name": "02-greyboxing-ue5",
+              "path": "unreal-level-design\\04-module-4\\02-greyboxing-ue5",
+              "children": [
+                {
+                  "type": "file",
+                  "name": "01-introduction.md",
+                  "path": "unreal-level-design\\04-module-4\\02-greyboxing-ue5\\01-introduction.md"
+                },
+                {
+                  "type": "file",
+                  "name": "02-scale.md",
+                  "path": "unreal-level-design\\04-module-4\\02-greyboxing-ue5\\02-scale.md"
+                },
+                {
+                  "type": "file",
+                  "name": "03-landscape.md",
+                  "path": "unreal-level-design\\04-module-4\\02-greyboxing-ue5\\03-landscape.md"
+                },
+                {
+                  "type": "file",
+                  "name": "04-primitives.md",
+                  "path": "unreal-level-design\\04-module-4\\02-greyboxing-ue5\\04-primitives.md"
+                },
+                {
+                  "type": "file",
+                  "name": "05-modeling.md",
+                  "path": "unreal-level-design\\04-module-4\\02-greyboxing-ue5\\05-modeling.md"
+                },
+                {
+                  "type": "file",
+                  "name": "06-exporting.md",
+                  "path": "unreal-level-design\\04-module-4\\02-greyboxing-ue5\\06-exporting.md"
+                },
+                {
+                  "type": "file",
+                  "name": "07-external-assets.md",
+                  "path": "unreal-level-design\\04-module-4\\02-greyboxing-ue5\\07-external-assets.md"
+                },
+                {
+                  "type": "file",
+                  "name": "08-materials.md",
+                  "path": "unreal-level-design\\04-module-4\\02-greyboxing-ue5\\08-materials.md"
+                },
+                {
+                  "type": "file",
+                  "name": "09-lighting.md",
+                  "path": "unreal-level-design\\04-module-4\\02-greyboxing-ue5\\09-lighting.md"
+                },
+                {
+                  "type": "file",
+                  "name": "10-playtesting.md",
+                  "path": "unreal-level-design\\04-module-4\\02-greyboxing-ue5\\10-playtesting.md"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

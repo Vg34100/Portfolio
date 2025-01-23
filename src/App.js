@@ -9,7 +9,7 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Navigate
+  Navigate,
 } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import "./style.css";
@@ -44,12 +44,11 @@ import DocumentationList from "./components/Knowledge/Lists/DocumentationList";
 import TutorialList from "./components/Knowledge/Lists/TutorialList";
 import ReferenceList from "./components/Knowledge/Lists/ReferenceList";
 import ShowcaseList from "./components/Knowledge/Lists/ShowcaseList";
-import UnrealEngine from "./components/Knowledge/Documentation/UnrealEngine";
 import GameDevBasics from "./components/Knowledge/Tutorials/GameDevBasics";
 import CppPatterns from "./components/Knowledge/Reference/CppPatterns";
 import AnimationPrinciples from "./components/Knowledge/Showcases/AnimationPrinciples";
-import UnrealEngineFundamentals from "./components/Knowledge/Documentation/UnrealEngineFundamentals.js";
-
+import UnrealEngineFundamentals from "./components/Knowledge/Documentation/UnrealEngineFundamentals";
+import FoundationsUXDesign from "./components/Knowledge/Documentation/FoundationsUXDesign.js";
 
 function App() {
   const [load, upadateLoad] = useState(true);
@@ -61,7 +60,6 @@ function App() {
 
     return () => clearTimeout(timer);
   }, []);
-
 
   return (
     <Router>
@@ -77,21 +75,30 @@ function App() {
 
           <Route path="/arcadia" element={<Arcadia />} />
           <Route path="/deep" element={<DEEP />} />
-          
+
           <Route path="/tools" element={<Tools />} />
           <Route path="/tools/ai" element={<GeneralAI />} />
 
-          <Route path="/tools/ai/neural/bidirectional" element={<Bidirectional />} />
+          <Route
+            path="/tools/ai/neural/bidirectional"
+            element={<Bidirectional />}
+          />
           <Route path="/tools/ai/neural/hopfield" element={<Hopfield />} />
           <Route path="/tools/ai/neural/perceptron" element={<Perceptron />} />
-          <Route path="/tools/ai/neural/perceptron-advanced" element={<PerceptronAdvanced />} />
+          <Route
+            path="/tools/ai/neural/perceptron-advanced"
+            element={<PerceptronAdvanced />}
+          />
           <Route path="/tools/ai/neural/epoch" element={<EpochSolver />} />
           <Route path="/tools/ai/genetic/basic" element={<Genetics />} />
           <Route path="/tools/ai/genetic/custom" element={<GeneticsCustom />} />
           <Route path="/tools/ai/fuzzy/basic" element={<FuzzySolver />} />
-          <Route path="/tools/ai/fuzzy/alternate" element={<FuzzySolverAlternate />} />
+          <Route
+            path="/tools/ai/fuzzy/alternate"
+            element={<FuzzySolverAlternate />}
+          />
           <Route path="/tools/ai/logic/inference" element={<Inference />} />
-          
+
           <Route path="/tools" element={<Tools />} />
           <Route path="/tools/ai" element={<GeneralAI />} />
 
@@ -102,15 +109,29 @@ function App() {
           <Route path="/knowledge/showcases" element={<ShowcaseList />} />
 
           {/* Example pages */}
-          <Route path="/knowledge/docs/unreal-engine" element={<UnrealEngine />} />
-          <Route path="/knowledge/tutorials/game-dev-basics" element={<GameDevBasics />} />
-          <Route path="/knowledge/reference/cpp-patterns" element={<CppPatterns />} />
-          <Route path="/knowledge/showcases/animation-principles" element={<AnimationPrinciples />} />
+          <Route
+            path="/knowledge/tutorials/game-dev-basics"
+            element={<GameDevBasics />}
+          />
+          <Route
+            path="/knowledge/reference/cpp-patterns"
+            element={<CppPatterns />}
+          />
+          <Route
+            path="/knowledge/showcases/animation-principles"
+            element={<AnimationPrinciples />}
+          />
 
-          <Route path="/knowledge/docs/unreal-engine-fundamentals" element={<UnrealEngineFundamentals />} />
+          <Route
+            path="/knowledge/docs/unreal-engine-fundamentals"
+            element={<UnrealEngineFundamentals />}
+          />
+          <Route
+            path="/knowledge/docs/foundations-ux-design"
+            element={<FoundationsUXDesign />}
+          />
 
-
-          <Route path="*" element={<Navigate to="/"/>} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
         <Footer />
       </div>
